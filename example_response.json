@@ -1,0 +1,128 @@
+{
+  "@context": [
+    "https://raw.githubusercontent.com/geojson/geojson-ld/master/contexts/geojson-base.jsonld",
+    {
+      "wx": "https://api.weather.gov/ontology#",
+      "@vocab": "https://api.weather.gov/ontology#"
+    }
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187744-3542106",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187744-3542106",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4187744-3542106",
+        "areaDesc": "Gove; Wichita; Kit Carson County; Cheyenne; Graham; Dundy; Sheridan; Hitchcock; Red Willow; Greeley; Rawlins; Sherman; Cheyenne; Yuma; Logan; Norton; Thomas; Wallace; Decatur",
+        "geocode": {
+          "UGC": [
+            "KSZ029",
+            "KSZ042",
+            "COZ253",
+            "COZ254",
+            "KSZ016",
+            "NEZ079",
+            "KSZ015",
+            "NEZ080",
+            "NEZ081",
+            "KSZ041",
+            "KSZ002",
+            "KSZ013",
+            "KSZ001",
+            "COZ252",
+            "KSZ028",
+            "KSZ004",
+            "KSZ014",
+            "KSZ027",
+            "KSZ003"
+          ],
+          "SAME": [
+            "020063",
+            "020203",
+            "008063",
+            "008017",
+            "020065",
+            "031057",
+            "020179",
+            "031087",
+            "031145",
+            "020071",
+            "020153",
+            "020181",
+            "020023",
+            "008125",
+            "020109",
+            "020137",
+            "020193",
+            "020199",
+            "020039"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/fire/KSZ029",
+          "https://api.weather.gov/zones/fire/KSZ042",
+          "https://api.weather.gov/zones/fire/COZ253",
+          "https://api.weather.gov/zones/fire/COZ254",
+          "https://api.weather.gov/zones/fire/KSZ016",
+          "https://api.weather.gov/zones/fire/NEZ079",
+          "https://api.weather.gov/zones/fire/KSZ015",
+          "https://api.weather.gov/zones/fire/NEZ080",
+          "https://api.weather.gov/zones/fire/NEZ081",
+          "https://api.weather.gov/zones/fire/KSZ041",
+          "https://api.weather.gov/zones/fire/KSZ002",
+          "https://api.weather.gov/zones/fire/KSZ013",
+          "https://api.weather.gov/zones/fire/KSZ001",
+          "https://api.weather.gov/zones/fire/COZ252",
+          "https://api.weather.gov/zones/fire/KSZ028",
+          "https://api.weather.gov/zones/fire/KSZ004",
+          "https://api.weather.gov/zones/fire/KSZ014",
+          "https://api.weather.gov/zones/fire/KSZ027",
+          "https://api.weather.gov/zones/fire/KSZ003"
+        ],
+        "references": [],
+        "sent": "2020-04-30T02:31:00-06:00",
+        "effective": "2020-04-30T02:31:00-06:00",
+        "onset": "2020-04-30T11:00:00-06:00",
+        "expires": "2020-04-30T20:00:00-06:00",
+        "ends": "2020-04-30T20:00:00-06:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Red Flag Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Goodland KS",
+        "headline": "Red Flag Warning issued April 30 at 2:31AM MDT until April 30 at 8:00PM MDT by NWS Goodland KS",
+        "description": "...Hazardous Fire Weather Conditions This Afternoon...\n\nThe National Weather Service in Goodland has issued a Red Flag\nWarning for wind and low relative humidity, which is in effect\nfrom 11 AM MDT /noon CDT/ this morning to 8 PM MDT /9 PM CDT/\nthis evening.\n\n* Affected Area...In Colorado...Fire Weather Zone 252 Yuma...Fire\nWeather Zone 253 Kit Carson and Fire Weather Zone 254 Cheyenne.\nIn Kansas...Fire Weather Zone 001 Cheyenne...Fire Weather Zone\n002 Rawlins...Fire Weather Zone 003 Decatur...Fire Weather Zone\n004 Norton...Fire Weather Zone 013 Sherman... Fire Weather Zone\n014 Thomas...Fire Weather Zone 015 Sheridan...Fire Weather Zone\n016 Graham...Fire Weather Zone 027 Wallace...Fire Weather Zone\n028 Logan...Fire Weather Zone 029 Gove...Fire Weather Zone 041\nGreeley and Fire Weather Zone 042 Wichita. In Nebraska...Fire\nWeather Zone 079 Dundy...Fire Weather Zone 080 Hitchcock and\nFire Weather Zone 081 Red Willow.\n\n* Winds...South at 15 to 20 mph with occasional gusts as high as\n25 to 35 mph.\n\n* Relative Humidity...Ranging from 10 to 20 percent.\n\n* Impacts...Extreme fire behavior. Any fires that start may\nrapidly grow and spread out of control.",
+        "instruction": "Avoid outdoor burning. Repeating, outdoor burning is not advised\ntoday. Any fires that start may rapidly grow and spread out of\ncontrol.",
+        "response": "Prepare",
+        "parameters": {
+          "NWSheadline": [
+            "RED FLAG WARNING IN EFFECT FROM 11 AM MDT /NOON CDT/ THIS MORNING TO 8 PM MDT /9 PM CDT/ THIS EVENING FOR WIND AND LOW RELATIVE HUMIDITY FOR FIRE WEATHER ZONES 001...002...003...004... 013...014...015...016...027...028...029...041...042...079...080... 081...252...253 AND 254"
+          ],
+          "VTEC": [
+            "/O.NEW.KGLD.FW.W.0009.200430T1700Z-200501T0200Z/"
+          ],
+          "PIL": [
+            "GLDRFWGLD"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-04-30T20:00:00-06:00"
+          ]
+        }
+      }
+    }
+  ],
+  "title": "current watches, warnings, and advisories for Kansas",
+  "updated": "2020-04-30T08:32:12+00:00"
+}
