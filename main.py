@@ -39,8 +39,8 @@ while (True):
     _ = system('COLOR 1') # turn text blue?
     #print(f'Last reload at {now}')
     print(f'\n{headline}')
-    print(description)
-    print(instruction)
+    print(f'\n{description}')
+    print(f'\n{instruction}')
     print('\n\nControl + C to quit')
 
     # How long till recheck
