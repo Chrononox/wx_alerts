@@ -3,6 +3,7 @@
 import json
 import requests
 import datetime
+import time
 from os import system, name
 
 # TODO: ADD COLORS FOR ALERTS, GET TIME STAMP WORKING, CLEAN UP CODE
@@ -36,7 +37,7 @@ while (True):
     # Displays info on screen
     _ = system('cls') # clears the screen for new updated info
     _ = system('COLOR 1') # turn text blue?
-    print(f'Last reload at {now}')
+    #print(f'Last reload at {now}')
     print(f'\n{headline}')
     print(description)
     print(instruction)
