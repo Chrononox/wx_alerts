@@ -5,7 +5,7 @@ import requests
 import datetime
 from os import system, name
 
-# TODO: ADD COLORS FOR ALERTS, CLEAN UP CODE
+# TODO: ADD COLORS FOR ALERTS, GET TIME STAMP WORKING, CLEAN UP CODE
 
 def get_url(state):
     temp = (f'https://api.weather.gov/alerts/active/area/{state}')
@@ -22,7 +22,7 @@ sleep_time = int(input("How long between checks(300 = 5 min): "))
 state = input("What state are we watching(all caps abbr): ")
 
 while (True):
-    now = datetime.datetime.now().time()
+    #now = datetime.datetime.now()
     # Gets info and stores it into variables
     response = requests.get(get_url(state))
     
@@ -35,6 +35,7 @@ while (True):
 
     # Displays info on screen
     _ = system('cls') # clears the screen for new updated info
+    _ = system('COLOR 1') # turn text blue?
     print(f'Last reload at {now}')
     print(f'\n{headline}')
     print(description)
