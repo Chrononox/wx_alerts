@@ -29,15 +29,15 @@ def display_alert(alert, color):
         print('\033[91m')
         print("YOUR COUNTY!!")
         print('\033[0m')
-    print(f'Last reload at {now}')
+    print(f'Last check at {now}')
 
 sleep_time = int(input("How long between checks(300 = 5 min): "))
 state = input("What state are we watching(all caps abbr): ").upper()
-
+counter = 0;
 ### Main Loop ###
 while (True):
     now = time.asctime(time.localtime(time.time()))
-
+    counter += 1
     # Gets info and stores it into variables
     response = requests.get(get_url(state))    
     alert_data = response.json()
@@ -45,7 +45,7 @@ while (True):
     alert_data_ids = alert_data['features']
 
     _ = system('cls') # clears the screen for new updated info
-    print(f'Last reload at {now}, Showing Warnings/Watches for {state}')
+    print(f'Check #{counter} at {now}, Showing Watches/Warns for {state}')
 
     for alert in alert_data_ids:
         if (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
@@ -63,9 +63,6 @@ while (True):
             play_sound(200, 500)
             display_alert(alert)
 
-        # if (alert['properties']['severity'] == 'Extreme'):
-        #     play_sound()
-        #     display_alert(alert, '\033[36m')
 
     # How long till recheck
     
