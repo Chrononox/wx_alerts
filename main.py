@@ -45,7 +45,7 @@ while (True):
     alert_data_ids = alert_data['features']
 
     _ = system('cls') # clears the screen for new updated info
-    print(f'Check #{counter} at {now}, Showing Watches/Warns for {state}')
+    print(f'Check #{counter} every{sleep_time}seconds, at {now}, Showing Watches/Warns for {state}')
 
     for alert in alert_data_ids:
         if (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
