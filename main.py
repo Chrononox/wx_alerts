@@ -6,25 +6,26 @@ import requests
 import time
 from os import system, name
 
-# TODO: ADD COLORS FOR ALERTS, ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE,
-#        ADD AUTO CAP FOR STATS, ADD DEFAULT VALUES, FILTER ALERT TYPES
-#
-# NOTE: For each seperate alert is a new id, need to cycle through them
-#       Maybe show all alerts unless watched area is found then only show watched area?
+# TODO:  ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE, ADD DEFAULT VALUES
+
 
 def get_url(state):
     temp = (f'https://api.weather.gov/alerts/active/area/{state}')
     return temp
 
-def display_alert(alert):
+def display_alert(alert, color):
     print('\n\n--------------------------------------------------')
     print(f"{alert['properties']['severity']}")
-    print('\033[31m')
+    print('{color}')
     print(f"{alert['properties']['event']}")
     print('\033[0m')
     print(f"\nHeadline:\n{alert['properties']['headline']}")
     print(f"\nDescription:\n{alert['properties']['description']}")
     print(f"\nArea:\n{alert['properties']['areaDesc']}")
+    if ('Jackson, MO' in alert['properties']['areaDesc']):
+        print('\033[91m')
+        print("YOUR COUNTY!!")
+        print('\033[0m')
     print(f'Last reload at {now}')
 
 sleep_time = int(input("How long between checks(300 = 5 min): "))
@@ -45,19 +46,19 @@ while (True):
 
     for alert in alert_data_ids:
         if (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
-            display_alert(alert)
+            display_alert(alert, '\033[31m')
         
         if (alert['properties']['event'] == 'Severe Thunderstorm Watch'):
-            display_alert(alert)
+            display_alert(alert, '\033[33m')
             
         if (alert['properties']['event'] == 'Tornado Warning'):
-            display_alert(alert)
+            display_alert(alert, '\033[95m')
 
         if (alert['properties']['event'] == 'Tornado Watch'):
             display_alert(alert)
 
         if (alert['properties']['severity'] == 'Extreme'):
-            display_alert(alert)
+            display_alert(alert, '\033[36m')
 
     # How long till recheck
     time.sleep(sleep_time)
