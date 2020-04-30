@@ -25,9 +25,10 @@ state = input("What state are we watching(all caps abbr): ")
 while (True):
     now = time.asctime(time.localtime(time.time()))
     # Gets info and stores it into variables
-    response = requests.get(get_url(state))
-    
+    response = requests.get(get_url(state))    
     alert_data = response.json()
+
+    alert_data_ids = alert_data['features']
     alert_data_counties = alert_data["features"][0]['properties']['areaDesc']
     event = alert_data['features'][0]['properties']['event']
     headline = alert_data['features'][0]['properties']['headline']
@@ -35,15 +36,24 @@ while (True):
     instruction = alert_data['features'][0]['properties']['instruction']
     secerity = alert_data['features'][0]['properties']['severity']
 
-
-    # Displays info on screen
     _ = system('cls') # clears the screen for new updated info
-    _ = system('COLOR 1') # turn text blue?
     print(f'Last reload at {now}')
-    print(f'\n{headline}')
-    print(f'\n{description}')
-    print(f'\n{instruction}')
-    print('\n\nControl + C to quit')
+    for alert in alert_data_ids:
+        print('\n\n--------------------------------------------------')
+        print(f"\nHeadline:\n{alert['properties']['headline']}")
+        print(f"\nDescription:\n{alert['properties']['description']}")
+        print(f"\nArea:\n{alert['properties']['areaDesc']}")
+        if('Jackson' in alert['properties']['areaDesc']): # this will be used to find home county alerts
+            print("\n\nCOUNTY FOUND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n")
+        print('\n\n--------------------------------------------------')
+    # Displays info on screen
+    # _ = system('cls') # clears the screen for new updated info
+    # _ = system('COLOR 1') # turn text blue?
+    # print(f'Last reload at {now}')
+    # print(f'\n{headline}')
+    # print(f'\n{description}')
+    # print(f'\n{instruction}')
+    # print('\n\nControl + C to quit')
 
     # How long till recheck
     time.sleep(sleep_time)

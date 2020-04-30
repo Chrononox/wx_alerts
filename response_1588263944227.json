@@ -1,0 +1,1050 @@
+{
+  "@context": [
+    "https://raw.githubusercontent.com/geojson/geojson-ld/master/contexts/geojson-base.jsonld",
+    {
+      "wx": "https://api.weather.gov/ontology#",
+      "@vocab": "https://api.weather.gov/ontology#"
+    }
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188444-3542649",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.59,
+              37.2299999
+            ],
+            [
+              -89.41,
+              37.25
+            ],
+            [
+              -89.28999999999999,
+              37.13
+            ],
+            [
+              -89.45999989999999,
+              37.09
+            ],
+            [
+              -89.59,
+              37.2299999
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188444-3542649",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188444-3542649",
+        "areaDesc": "Scott, MO; Alexander, IL",
+        "geocode": {
+          "UGC": [
+            "MOC201",
+            "ILC003"
+          ],
+          "SAME": [
+            "029201",
+            "017003"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MOC201",
+          "https://api.weather.gov/zones/county/ILC003"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4186403-3541210",
+            "identifier": "NWS-IDP-PROD-4186403-3541210",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T11:38:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T11:18:00-05:00",
+        "effective": "2020-04-30T11:18:00-05:00",
+        "onset": "2020-04-30T11:18:00-05:00",
+        "expires": "2020-05-01T15:18:00-05:00",
+        "ends": "2020-05-05T11:30:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Paducah KY",
+        "headline": "Flood Warning issued April 30 at 11:18AM CDT until May 5 at 11:30AM CDT by NWS Paducah KY",
+        "description": "...The flood warning continues for the following rivers in\nIllinois...Missouri...\n\nMississippi River at Cape Girardeau\nMississippi River at Thebes\n\n.The Mississippi River at Cape Girardeau and Thebes will continue\nrising until its forecast crest this Saturday.\n\nThe Flood Warning continues for\nthe Mississippi River at Thebes.\n* until Tuesday morning.\n* At 11:00 AM Thursday the stage was 34.1 feet.\n* Flood Stage is 33.0 feet.\n* Minor flooding is occurring and Minor flooding is forecast.\n* Forecast...The river will continue rising to near 35.0 feet by\nSaturday early afternoon. The river will fall below flood stage\nTuesday morning.\n* Impact...At 34.0 Feet...The town of Thebes begins to flood.",
+        "instruction": "SAFETY MESSAGE...\n\nNever drive cars...trucks or sport utility vehicles through flooded\nareas. The water may be too deep to allow safe passage. Never allow\nchildren to play in or near flood waters. Stay tuned to NOAA Weather\nRadio or your local media for further statements and possible updated\nforecasts.\n\nAdditional information is available at\nhttp://www.crh.noaa.gov/ahps2/index.php?wfo=pah /lower case/",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.EXT.KPAH.FL.W.0062.000000T0000Z-200505T1630Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "PAHFLSPAH"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-05-05T11:30:00-05:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188445-3542650",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.59,
+              37.69
+            ],
+            [
+              -89.35000000000001,
+              37.69
+            ],
+            [
+              -89.34,
+              37.44
+            ],
+            [
+              -89.41,
+              37.25
+            ],
+            [
+              -89.59,
+              37.2299999
+            ],
+            [
+              -89.63000000000001,
+              37.32
+            ],
+            [
+              -89.59,
+              37.69
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188445-3542650",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188445-3542650",
+        "areaDesc": "Scott, MO; Union, IL; Alexander, IL; Jackson, IL; Cape Girardeau, MO; Perry, MO",
+        "geocode": {
+          "UGC": [
+            "MOC201",
+            "ILC181",
+            "ILC003",
+            "ILC077",
+            "MOC031",
+            "MOC157"
+          ],
+          "SAME": [
+            "029201",
+            "017181",
+            "017003",
+            "017077",
+            "029031",
+            "029157"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MOC201",
+          "https://api.weather.gov/zones/county/ILC181",
+          "https://api.weather.gov/zones/county/ILC003",
+          "https://api.weather.gov/zones/county/ILC077",
+          "https://api.weather.gov/zones/county/MOC031",
+          "https://api.weather.gov/zones/county/MOC157"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4186402-3541209",
+            "identifier": "NWS-IDP-PROD-4186402-3541209",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T11:38:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T11:18:00-05:00",
+        "effective": "2020-04-30T11:18:00-05:00",
+        "onset": "2020-04-30T11:18:00-05:00",
+        "expires": "2020-05-01T15:18:00-05:00",
+        "ends": "2020-05-06T08:30:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Paducah KY",
+        "headline": "Flood Warning issued April 30 at 11:18AM CDT until May 6 at 8:30AM CDT by NWS Paducah KY",
+        "description": "...The flood warning continues for the following rivers in\nIllinois...Missouri...\n\nMississippi River at Cape Girardeau\nMississippi River at Thebes\n\n.The Mississippi River at Cape Girardeau and Thebes will continue\nrising until its forecast crest this Saturday.\n\nThe Flood Warning continues for\nthe Mississippi River at Cape Girardeau.\n* until Wednesday morning.\n* At 11:00 AM Thursday the stage was 35.1 feet.\n* Flood Stage is 32.0 feet.\n* Minor flooding is occurring and Minor flooding is forecast.\n* Forecast...The river will continue rising to near 36.0 feet by\nSaturday morning. The river will fall below flood stage early\nWednesday morning.\n* Impact...At 36.0 Feet...The flood gate on Themis Street closes.",
+        "instruction": "SAFETY MESSAGE...\n\nNever drive cars...trucks or sport utility vehicles through flooded\nareas. The water may be too deep to allow safe passage. Never allow\nchildren to play in or near flood waters. Stay tuned to NOAA Weather\nRadio or your local media for further statements and possible updated\nforecasts.\n\nAdditional information is available at\nhttp://www.crh.noaa.gov/ahps2/index.php?wfo=pah /lower case/",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.EXT.KPAH.FL.W.0039.000000T0000Z-200506T1330Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "PAHFLSPAH"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-05-06T08:30:00-05:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188439-3542644",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.4599999,
+              37.09
+            ],
+            [
+              -89.16,
+              37.17
+            ],
+            [
+              -89.0699999,
+              37.09
+            ],
+            [
+              -89,
+              36.800000000000004
+            ],
+            [
+              -89.18,
+              36.510000000000005
+            ],
+            [
+              -89.4599999,
+              37.09
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188439-3542644",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188439-3542644",
+        "areaDesc": "Mississippi, MO; Fulton, KY; Hickman, KY; Alexander, IL; Carlisle, KY; Ballard, KY; Pulaski, IL",
+        "geocode": {
+          "UGC": [
+            "MOC133",
+            "KYC075",
+            "KYC105",
+            "ILC003",
+            "KYC039",
+            "KYC007",
+            "ILC153"
+          ],
+          "SAME": [
+            "029133",
+            "021075",
+            "021105",
+            "017003",
+            "021039",
+            "021007",
+            "017153"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MOC133",
+          "https://api.weather.gov/zones/county/KYC075",
+          "https://api.weather.gov/zones/county/KYC105",
+          "https://api.weather.gov/zones/county/ILC003",
+          "https://api.weather.gov/zones/county/KYC039",
+          "https://api.weather.gov/zones/county/KYC007",
+          "https://api.weather.gov/zones/county/ILC153"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4186398-3541205",
+            "identifier": "NWS-IDP-PROD-4186398-3541205",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T11:35:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T11:13:00-05:00",
+        "effective": "2020-04-30T11:13:00-05:00",
+        "onset": "2020-04-30T11:13:00-05:00",
+        "expires": "2020-05-01T15:13:00-05:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Paducah KY",
+        "headline": "Flood Warning issued April 30 at 11:13AM CDT by NWS Paducah KY",
+        "description": "...The flood warning continues for the following rivers in\nIllinois...Kentucky...Missouri...\n\nOhio River at Olmsted Lock and Dam\nOhio River at Cairo\n\n.The Ohio River at Olmsted and Cairo will continue to rise,\nand is forecast to crest Sunday morning.\n\nThe Flood Warning continues for\nthe Ohio River at Cairo\n* until further notice.\n* At 10:00 AM Thursday the stage was 44.0 feet.\n* Flood Stage is 40.0 feet.\n* Minor flooding is occurring and Minor flooding is forecast.\n* Forecast...The river will continue rising to near 45.5 feet by\nSunday morning.",
+        "instruction": "SAFETY MESSAGE...\n\nNever drive cars...trucks or sport utility vehicles through flooded\nareas. The water may be too deep to allow safe passage. Never allow\nchildren to play in or near flood waters. Stay tuned to NOAA Weather\nRadio or your local media for further statements and possible updated\nforecasts.\n\nAdditional information is available at\nhttp://www.crh.noaa.gov/ahps2/index.php?wfo=pah /lower case/",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.CON.KPAH.FL.W.0023.000000T0000Z-000000T0000Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "PAHFLSPAH"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188403-3542623",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.5699999,
+              36.5
+            ],
+            [
+              -89.38,
+              36.5
+            ],
+            [
+              -89.47999999999999,
+              36.2299999
+            ],
+            [
+              -89.77,
+              36.2299999
+            ],
+            [
+              -89.5699999,
+              36.5
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188403-3542623",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188403-3542623",
+        "areaDesc": "New Madrid, MO; Pemiscot, MO; Lake, TN",
+        "geocode": {
+          "UGC": [
+            "MOC143",
+            "MOC155",
+            "TNC095"
+          ],
+          "SAME": [
+            "029143",
+            "029155",
+            "047095"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MOC143",
+          "https://api.weather.gov/zones/county/MOC155",
+          "https://api.weather.gov/zones/county/TNC095"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187097-3541694",
+            "identifier": "NWS-IDP-PROD-4187097-3541694",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T20:39:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T11:01:00-05:00",
+        "effective": "2020-04-30T11:01:00-05:00",
+        "onset": "2020-04-30T11:01:00-05:00",
+        "expires": "2020-05-01T11:00:00-05:00",
+        "ends": "2020-05-08T13:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Memphis TN",
+        "headline": "Flood Advisory issued April 30 at 11:01AM CDT until May 8 at 1:00PM CDT by NWS Memphis TN",
+        "description": "...The Flood Advisory continues for the Mississippi River...\nMississippi River at Tiptonville affecting New Madrid...Pemiscot\nand Lake Counties\nMississippi River at Memphis affecting Crittenden...DeSoto and\nShelby Counties\nMississippi River at Tunica Riverpark affecting Lee and Tunica\nCounties\n\nThe Flood Advisory continues for\nthe Mississippi River at Tiptonville\n* until Friday, May 8.\n* At 10 AM Thursday the stage was 33.9 feet.\n* Flood stage is 37.0 feet.\n* Forecast...The river will rise to near 35.5 feet by Monday, May 4,\nthen begin a steady fall.\n* At 36.0 feet...In Missouri, Most fields around Robinson Lake in\nPemiscot County are covered by flood water.",
+        "instruction": "The next River Statement will be issued when conditions warrant.\n\nFor graphical river and flood information...please go to\nwww.weather.gov and click near Memphis on the map, then select Rivers\nand Lakes.\n\nDo not drive through flooded areas...turn around don't drown.\n\nStay tuned to your weather radio and your local news media for the\nlatest river information.",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.CON.KMEG.FL.Y.0042.200430T1601Z-200508T1800Z/"
+          ],
+          "PIL": [
+            "MEGFLSMEG"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-05-08T13:00:00-05:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188372-3542597",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.77,
+              36.2299999
+            ],
+            [
+              -89.47999999999999,
+              36.2299999
+            ],
+            [
+              -89.49999999999999,
+              36.06
+            ],
+            [
+              -89.47999999999999,
+              35.95
+            ],
+            [
+              -89.55999999999999,
+              35.82
+            ],
+            [
+              -89.85,
+              35.82
+            ],
+            [
+              -89.77,
+              36.2299999
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188372-3542597",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188372-3542597",
+        "areaDesc": "Lauderdale, TN; Dyer, TN; Pemiscot, MO; Lake, TN; Mississippi, AR",
+        "geocode": {
+          "UGC": [
+            "TNC097",
+            "TNC045",
+            "MOC155",
+            "TNC095",
+            "ARC093"
+          ],
+          "SAME": [
+            "047097",
+            "047045",
+            "029155",
+            "047095",
+            "005093"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/TNC097",
+          "https://api.weather.gov/zones/county/TNC045",
+          "https://api.weather.gov/zones/county/MOC155",
+          "https://api.weather.gov/zones/county/TNC095",
+          "https://api.weather.gov/zones/county/ARC093"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187057-3541656",
+            "identifier": "NWS-IDP-PROD-4187057-3541656",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T20:27:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T10:43:00-05:00",
+        "effective": "2020-04-30T10:43:00-05:00",
+        "onset": "2020-05-01T07:00:00-05:00",
+        "expires": "2020-05-01T10:41:00-05:00",
+        "ends": "2020-05-09T16:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Memphis TN",
+        "headline": "Flood Warning issued April 30 at 10:42AM CDT until May 9 at 4:00PM CDT by NWS Memphis TN",
+        "description": "The Flood Warning continues for the Mississippi River.\n\nThe Flood Warning continues for\nthe Mississippi River at Caruthersville\n* from Friday, May 1 until Friday, May 8.\n* At 10 AM Thursday the stage was 31.5 feet.\n* Minor flooding is forecast.\n* Maximum forecast stage of 33.0 feet on Monday, May 4.\n* Flood stage is 32.0 feet.\n* Forecast to rise above flood stage by Friday, May 1, cresting near\n33.0 feet on Monday, May 4. The river is forecast to fall below\nflood stage by Friday, May 8.\n* At 33.0 feet...In Tennessee, Barr Road in Chickasaw National\nWildlife Refuge is flooding, cutting off evacuations from the\nWardlews Pocket Area. In Arkansas, docks useed by the steel plant\nat Hickman are mostly flooded. Numerous roads and fields inside the\nlevee between Gayoso and Kennedy, Missouri are covered.",
+        "instruction": "A followup Flood Statement will be issued this evening or sooner if\nconditions warrant.\n\nFor graphical river and flood information...please go to\nwww.weather.gov and click near Memphis on the map, then select Rivers\nand Lakes.\n\nDo not drive through flooded areas...turn around don't drown.\n\nStay tuned to your weather radio and your local news media for the\nlatest river information.",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.EXT.KMEG.FL.W.0126.200501T1200Z-200509T2100Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "MEGFLSMEG"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-05-09T16:00:00-05:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188337-3542563",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -91.5,
+              38.72
+            ],
+            [
+              -91.5,
+              38.69
+            ],
+            [
+              -91.56,
+              38.659999899999995
+            ],
+            [
+              -91.64,
+              38.67999999999999
+            ],
+            [
+              -91.64,
+              38.729999899999996
+            ],
+            [
+              -91.5,
+              38.72
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188337-3542563",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188337-3542563",
+        "areaDesc": "Montgomery, MO; Gasconade, MO",
+        "geocode": {
+          "UGC": [
+            "MOC139",
+            "MOC073"
+          ],
+          "SAME": [
+            "029139",
+            "029073"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MOC139",
+          "https://api.weather.gov/zones/county/MOC073"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187047-3541647",
+            "identifier": "NWS-IDP-PROD-4187047-3541647",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T20:24:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T10:24:00-05:00",
+        "effective": "2020-04-30T10:24:00-05:00",
+        "onset": "2020-04-30T10:24:00-05:00",
+        "expires": "2020-05-01T16:24:00-05:00",
+        "ends": "2020-05-02T05:30:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS St Louis MO",
+        "headline": "Flood Warning issued April 30 at 10:24AM CDT until May 2 at 5:30AM CDT by NWS St Louis MO",
+        "description": "...The flood warning continues for the following rivers in\nMissouri...\n\nMissouri River at Gasconade\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\nThe Flood Warning continues for\nthe Missouri River at Gasconade\n* until late Friday night.\n* At 7:30 AM Wednesday the stage was 23.0 feet.\n* Flood stage is 22.0 feet.\n* Minor flooding is forecast.\n* The river is forecast to continue falling to below flood stage by\nlate this afternoon.\n* Impact:  At 22.4 feet...Gasconade Park boat ramp...BBQ grills...and\nparking area begins flooding near this height.",
+        "instruction": "Rainfall heavier than forecast could cause river levels to rise even\nhigher than predicted.  The National Weather Service will monitor\nthis developing situation and issue follow up statements as\nconditions or forecasts change.\n\nSafety message:  Never drive cars, trucks, or sport utility vehicles\nthrough flooded areas.  The water may be too deep to allow for safe\npassage.\n\nThis product, along with additional weather and stream information,\nis available at http://water.weather.gov/ahps2/index.php?wfo=lsx.",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.EXT.KLSX.FL.W.0107.000000T0000Z-200502T1030Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "LSXFLSLSX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-05-02T05:30:00-05:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188313-3542542",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.43,
+              38.26
+            ],
+            [
+              -90.30000000000001,
+              38.26
+            ],
+            [
+              -89.35000000000001,
+              37.69
+            ],
+            [
+              -89.59,
+              37.69
+            ],
+            [
+              -90.03,
+              37.87
+            ],
+            [
+              -90.43,
+              38.26
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188313-3542542",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188313-3542542",
+        "areaDesc": "Randolph, IL; Jackson, IL; Ste. Genevieve, MO; Perry, MO",
+        "geocode": {
+          "UGC": [
+            "ILC157",
+            "ILC077",
+            "MOC186",
+            "MOC157"
+          ],
+          "SAME": [
+            "017157",
+            "017077",
+            "029186",
+            "029157"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/ILC157",
+          "https://api.weather.gov/zones/county/ILC077",
+          "https://api.weather.gov/zones/county/MOC186",
+          "https://api.weather.gov/zones/county/MOC157"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187250-3541800",
+            "identifier": "NWS-IDP-PROD-4187250-3541800",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T21:46:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T10:18:00-05:00",
+        "effective": "2020-04-30T10:18:00-05:00",
+        "onset": "2020-04-30T10:17:00-05:00",
+        "expires": "2020-05-01T16:16:00-05:00",
+        "ends": "2020-05-06T04:36:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS St Louis MO",
+        "headline": "Flood Warning issued April 30 at 10:17AM CDT until May 6 at 4:36AM CDT by NWS St Louis MO",
+        "description": "...The flood warning continues for the Mississippi River at\nthe following locations...\n\nMississippi River at Mel Price LD\n\nMississippi River at Chester\n\nMississippi River at Grafton\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\nThe Flood Warning continues for\nthe Mississippi River at Chester\n* until late Tuesday night.\n* At 10:00 AM Thursday the stage was 32.0 feet.\n* Flood stage is 27.0 feet.\n* Minor flooding is forecast.\n* The river is forecast to crest near 32.3 feet by tomorrow early\nafternoon, then fall below flood stage Monday before midnight.\n* Impact:  At 31.5 feet...In Perry County, Highway E is closed between\nCounty Road 322 and Levee Road (County Road 354) at Bois Brule\nCreek.",
+        "instruction": "Rainfall heavier than forecast could cause river levels to rise even\nhigher than predicted.  The National Weather Service will monitor\nthis developing situation and issue follow up statements as\nconditions or forecasts change.\n\nSafety message:  Never drive cars, trucks, or sport utility vehicles\nthrough flooded areas.  The water may be too deep to allow for safe\npassage.\n\nThis product, along with additional weather and stream information,\nis available at http://water.weather.gov/ahps2/index.php?wfo=lsx.",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.EXT.KLSX.FL.W.0056.000000T0000Z-200506T0936Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "LSXFLSLSX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-05-06T04:36:00-05:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188312-3542541",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.33,
+              38.9099999
+            ],
+            [
+              -90.28,
+              38.95
+            ],
+            [
+              -90.03,
+              38.830000000000005
+            ],
+            [
+              -90.17,
+              38.81
+            ],
+            [
+              -90.17,
+              38.86
+            ],
+            [
+              -90.33,
+              38.9099999
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188312-3542541",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188312-3542541",
+        "areaDesc": "Madison, IL; St. Charles, MO",
+        "geocode": {
+          "UGC": [
+            "ILC119",
+            "MOC183"
+          ],
+          "SAME": [
+            "017119",
+            "029183"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/ILC119",
+          "https://api.weather.gov/zones/county/MOC183"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187246-3541796",
+            "identifier": "NWS-IDP-PROD-4187246-3541796",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T21:46:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T10:18:00-05:00",
+        "effective": "2020-04-30T10:18:00-05:00",
+        "onset": "2020-04-30T10:17:00-05:00",
+        "expires": "2020-05-01T16:16:00-05:00",
+        "ends": "2020-05-03T19:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS St Louis MO",
+        "headline": "Flood Warning issued April 30 at 10:17AM CDT until May 3 at 7:00PM CDT by NWS St Louis MO",
+        "description": "...The flood warning continues for the Mississippi River at\nthe following locations...\n\nMississippi River at Mel Price LD\n\nMississippi River at Chester\n\nMississippi River at Grafton\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\nThe Flood Warning continues for\nthe Mississippi River at Mel Price LD\n* until Sunday evening.\n* At 10:00 AM Thursday the stage was 22.3 feet.\n* Flood stage is 21.0 feet.\n* Minor flooding is forecast.\n* The river is forecast to continue falling to below flood stage by\nSaturday early afternoon.\n* Impact:  At 21.0 feet...Flood Stage.  Minor flooding begins to occur\nat this level.",
+        "instruction": "Rainfall heavier than forecast could cause river levels to rise even\nhigher than predicted.  The National Weather Service will monitor\nthis developing situation and issue follow up statements as\nconditions or forecasts change.\n\nSafety message:  Never drive cars, trucks, or sport utility vehicles\nthrough flooded areas.  The water may be too deep to allow for safe\npassage.\n\nThis product, along with additional weather and stream information,\nis available at http://water.weather.gov/ahps2/index.php?wfo=lsx.",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.EXT.KLSX.FL.W.0106.000000T0000Z-200504T0000Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "LSXFLSLSX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-05-03T19:00:00-05:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188314-3542543",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.5699999,
+              38.81
+            ],
+            [
+              -90.5699999,
+              38.88
+            ],
+            [
+              -90.4599999,
+              38.99
+            ],
+            [
+              -90.28,
+              38.95
+            ],
+            [
+              -90.48,
+              38.82
+            ],
+            [
+              -90.5699999,
+              38.81
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188314-3542543",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188314-3542543",
+        "areaDesc": "Jersey, IL; St. Charles, MO",
+        "geocode": {
+          "UGC": [
+            "ILC083",
+            "MOC183"
+          ],
+          "SAME": [
+            "017083",
+            "029183"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/ILC083",
+          "https://api.weather.gov/zones/county/MOC183"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187249-3541799",
+            "identifier": "NWS-IDP-PROD-4187249-3541799",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T21:46:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T10:18:00-05:00",
+        "effective": "2020-04-30T10:18:00-05:00",
+        "onset": "2020-04-30T10:17:00-05:00",
+        "expires": "2020-05-01T16:16:00-05:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS St Louis MO",
+        "headline": "Flood Warning issued April 30 at 10:17AM CDT by NWS St Louis MO",
+        "description": "...The flood warning continues for the Mississippi River at\nthe following locations...\n\nMississippi River at Mel Price LD\n\nMississippi River at Chester\n\nMississippi River at Grafton\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\nThe Flood Warning continues for\nthe Mississippi River at Grafton\n* until further notice.\n* At 10:00 AM Thursday the stage was 20.5 feet.\n* Flood stage is 18.0 feet.\n* Minor flooding is forecast.\n* The river is forecast to continue to fall slowly.\n* Impact:  At 18.0 feet...Flood Stage.  Right bank begins to\noverflow...flooding farmland.",
+        "instruction": "Rainfall heavier than forecast could cause river levels to rise even\nhigher than predicted.  The National Weather Service will monitor\nthis developing situation and issue follow up statements as\nconditions or forecasts change.\n\nSafety message:  Never drive cars, trucks, or sport utility vehicles\nthrough flooded areas.  The water may be too deep to allow for safe\npassage.\n\nThis product, along with additional weather and stream information,\nis available at http://water.weather.gov/ahps2/index.php?wfo=lsx.",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.CON.KLSX.FL.W.0060.000000T0000Z-000000T0000Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "LSXFLSLSX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188294-3542524",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.43,
+              38.4799999
+            ],
+            [
+              -90.39,
+              38.4799999
+            ],
+            [
+              -90.3199999,
+              38.46
+            ],
+            [
+              -90.34,
+              38.4099999
+            ],
+            [
+              -90.43,
+              38.45
+            ],
+            [
+              -90.43,
+              38.4799999
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4188294-3542524",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4188294-3542524",
+        "areaDesc": "Jefferson, MO; St. Louis, MO",
+        "geocode": {
+          "UGC": [
+            "MOC099",
+            "MOC189"
+          ],
+          "SAME": [
+            "029099",
+            "029189"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MOC099",
+          "https://api.weather.gov/zones/county/MOC189"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4187214-3541767",
+            "identifier": "NWS-IDP-PROD-4187214-3541767",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-04-29T21:24:00-05:00"
+          }
+        ],
+        "sent": "2020-04-30T10:06:00-05:00",
+        "effective": "2020-04-30T10:06:00-05:00",
+        "onset": "2020-04-30T10:06:00-05:00",
+        "expires": "2020-05-01T16:05:00-05:00",
+        "ends": "2020-05-04T20:12:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS St Louis MO",
+        "headline": "Flood Warning issued April 30 at 10:06AM CDT until May 4 at 8:12PM CDT by NWS St Louis MO",
+        "description": "...The flood warning continues for the following rivers in\nMissouri...\n\nMeramec River near Arnold\n\nRiver forecasts are based on observed precipitation and forecast\nprecipitation for the next 24 hours.\n\nThe Flood Warning continues for\nthe Meramec River near Arnold\n* until Monday evening.\n* At 9:30 AM Thursday the stage was 26.9 feet.\n* Flood stage is 24.0 feet.\n* Minor flooding is forecast.\n* The river is forecast to continue rising to near  feet by this\nafternoon, then fall below flood stage Sunday early afternoon.\n* Impact:  At 27.0 feet...Meramec Bottom Road between Wells Road and\nKerth Road begins flooding near this height.",
+        "instruction": "Rainfall heavier than forecast could cause river levels to rise even\nhigher than predicted.  The National Weather Service will monitor\nthis developing situation and issue follow up statements as\nconditions or forecasts change.\n\nSafety message:  Never drive cars, trucks, or sport utility vehicles\nthrough flooded areas.  The water may be too deep to allow for safe\npassage.\n\nThis product, along with additional weather and stream information,\nis available at http://water.weather.gov/ahps2/index.php?wfo=lsx.",
+        "response": "Avoid",
+        "parameters": {
+          "VTEC": [
+            "/O.EXT.KLSX.FL.W.0104.000000T0000Z-200505T0112Z/"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "PIL": [
+            "LSXFLSLSX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-05-04T20:12:00-05:00"
+          ]
+        }
+      }
+    }
+  ],
+  "title": "current watches, warnings, and advisories for Missouri",
+  "updated": "2020-04-30T16:19:04+00:00"
+}
