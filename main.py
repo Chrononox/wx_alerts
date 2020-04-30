@@ -2,7 +2,7 @@
 
 import json
 import requests
-import datetime
+#import datetime
 import time
 from os import system, name
 
@@ -18,12 +18,11 @@ def get_url(state):
 # url_CO = 'https://api.weather.gov/alerts/active/area/CO'
 
 sleep_time = 300 # in seconds
-
 sleep_time = int(input("How long between checks(300 = 5 min): "))
 state = input("What state are we watching(all caps abbr): ")
 
 while (True):
-    #now = datetime.datetime.now()
+    now = time.asctime(time.localtime(time.time()))
     # Gets info and stores it into variables
     response = requests.get(get_url(state))
     
@@ -37,7 +36,7 @@ while (True):
     # Displays info on screen
     _ = system('cls') # clears the screen for new updated info
     _ = system('COLOR 1') # turn text blue?
-    #print(f'Last reload at {now}')
+    print(f'Last reload at {now}')
     print(f'\n{headline}')
     print(f'\n{description}')
     print(f'\n{instruction}')
