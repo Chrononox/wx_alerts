@@ -6,7 +6,8 @@ import requests
 import time
 from os import system, name
 
-# TODO: ADD COLORS FOR ALERTS, GET TIME STAMP WORKING, CLEAN UP CODE
+# TODO: ADD COLORS FOR ALERTS, ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE
+# NOTE: For each seperate alert is a new id, need to cycle through them
 
 def get_url(state):
     temp = (f'https://api.weather.gov/alerts/active/area/{state}')
@@ -32,6 +33,8 @@ while (True):
     headline = alert_data['features'][0]['properties']['headline']
     description = alert_data['features'][0]['properties']['description']
     instruction = alert_data['features'][0]['properties']['instruction']
+    secerity = alert_data['features'][0]['properties']['severity']
+
 
     # Displays info on screen
     _ = system('cls') # clears the screen for new updated info
