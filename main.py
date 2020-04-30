@@ -6,7 +6,8 @@ import requests
 import time
 from os import system, name
 
-# TODO: ADD COLORS FOR ALERTS, ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE
+# TODO: ADD COLORS FOR ALERTS, ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE,
+#        ADD AUTO CAP FOR STATS, ADD DEFAULT VALUES, FILTER ALERT TYPES
 # NOTE: For each seperate alert is a new id, need to cycle through them
 
 def get_url(state):
@@ -43,9 +44,13 @@ while (True):
         print(f"\nHeadline:\n{alert['properties']['headline']}")
         print(f"\nDescription:\n{alert['properties']['description']}")
         print(f"\nArea:\n{alert['properties']['areaDesc']}")
-        if('Jackson' in alert['properties']['areaDesc']): # this will be used to find home county alerts
+        if('Jackson, MO' in alert['properties']['areaDesc']): # this will be used to find home county alerts
             print("\n\nCOUNTY FOUND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n")
+        print(f'Last reload at {now}')
         print('\n\n--------------------------------------------------')
+
+
+
     # Displays info on screen
     # _ = system('cls') # clears the screen for new updated info
     # _ = system('COLOR 1') # turn text blue?
