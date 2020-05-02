@@ -2,7 +2,6 @@
 
 import json
 import requests
-#import datetime
 import time
 from os import system, name
 import winsound
@@ -63,8 +62,5 @@ while (True):
             play_sound(200, 500)
             display_alert(alert)
 
-
-    # How long till recheck
-    
+    # How long till recheck    
     time.sleep(sleep_time)
-
