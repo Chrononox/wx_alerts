@@ -1,9 +1,12 @@
 #grab and display weather alerts
 
-# TODO: Allow nationwide or per state (?multi-state?)
+# TODO: Allow nationwide or per state (?multi-state?) -- This is now all automatic
 #       Remember active seen alerts to avoid re-beeps
-#       Set Home and prioritize home alerts
-#       Re-Evaluate info to be shown and display formatting
+#       Need to prioritize T-warn over all and s-war/ t-watch over s-watch, 
+#       Need to make sure special weather statemens are getting thouugh
+#       need to make sure we are getting most local info i.e. wind, freeze, etc.
+#       Set Home and prioritize home alerts -- This is complete
+#       Re-Evaluate info to be shown and display formatting -- working
 #       Make better comments and notes
 #       More useful info Number of warnings and watches in area
 
@@ -47,7 +50,7 @@ def display_alert(alert, color = '\033[0m'):
     print(f"\nArea:\n{alert['properties']['instruction']}")
     print(f"\nArea:\n{alert['properties']['areaDesc']}")
     
-    # applies color and sound effects to different warn/watch types 
+# applies color and sound effects to different warn/watch types 
 def effects(alert):
              
     if (alert['properties']['event'] == 'Tornado Warning'):
@@ -58,11 +61,11 @@ def effects(alert):
         play_sound(1000, 500)
         display_alert(alert, '\033[31m')
     
-    if (alert['properties']['event'] == 'Tornado Watch' and warn_found == False):
+    if (alert['properties']['event'] == 'Tornado Watch'):
         play_sound(200, 500)
         display_alert(alert, '\033[96m')
         
-    if (alert['properties']['event'] == 'Severe Thunderstorm Watch' and warn_found == False and tor_found == False):
+    if (alert['properties']['event'] == 'Severe Thunderstorm Watch'):
         display_alert(alert, '\033[33m')
 
     ## ##
@@ -97,8 +100,7 @@ while(True):
         if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):
             local_alert = True
             #display_alert(alert)
-            effects(alert)
-            
+            effects(alert)            
         
     if(local_alert == False):
         #print("Looking for " + state)
