@@ -1,5 +1,15 @@
 #grab and display weather alerts
 
+# TODO: Allow nationwide or per state (?multi-state?)
+#       Remember active seen alerts to avoid re-beeps
+#       Set Home and prioritize home alerts
+#       Re-Evaluate info to be shown and display formatting
+#       Make better comments and notes
+
+# Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
+# Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
+
+#
 import json
 import requests
 import time
@@ -36,7 +46,7 @@ def display_alert(alert, color):
     print(f'Last check at {now}')
 
 # Version Info #
-print("** Weather Alert App. Version 1 Master Branch **\n")
+print("** Weather Alert App. Version 1 Working Branch **\n")
 sleep_time = int(input("How long between checks(300 = 5 min): "))
 state = input("What state are we watching(all caps abbr): ").upper()
 counter = 0
