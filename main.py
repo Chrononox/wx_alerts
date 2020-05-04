@@ -17,6 +17,10 @@ def get_url(state):
 
 def display_alert(alert, color):
     print('\n\n--------------------------------------------------')
+    if ('Jackson, MO' in alert['properties']['areaDesc']):
+        print('\033[91m')
+        print("---> THIS IS YOU!! <---")
+        print('\033[0m')
     print(f"{alert['properties']['severity']}")
     print(f'{color}')
     print(f"{alert['properties']['event']}")
@@ -24,15 +28,12 @@ def display_alert(alert, color):
     print(f"\nHeadline:\n{alert['properties']['headline']}")
     print(f"\nDescription:\n{alert['properties']['description']}")
     print(f"\nArea:\n{alert['properties']['areaDesc']}")
-    if ('Jackson, MO' in alert['properties']['areaDesc']):
-        print('\033[91m')
-        print("YOUR COUNTY!!")
-        print('\033[0m')
+   
     print(f'Last check at {now}')
 
 sleep_time = int(input("How long between checks(300 = 5 min): "))
 state = input("What state are we watching(all caps abbr): ").upper()
-counter = 0;
+counter = 0
 ### Main Loop ###
 while (True):
     now = time.asctime(time.localtime(time.time()))
