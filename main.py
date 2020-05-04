@@ -12,6 +12,8 @@
 
 # TODO:  ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE, ADD DEFAULT VALUES
 
+# Special W
+
 
 # Imports
 import json
@@ -36,7 +38,7 @@ def get_url_us():
     return temp
 
 # Controls what the display looks like
-def display_alert(alert, color):
+def display_alert(alert, color = '\033[0m'):
     print('\n\n--------------------------------------------------')
     if ('Jackson, MO' in alert['properties']['areaDesc']):
         print('\033[91m')
@@ -53,21 +55,27 @@ def display_alert(alert, color):
         print('\033[91m')
         print("---> THIS IS YOU!! <---")
         print('\033[0m')   
-    print(f'Last check at {now}')
+    print(f'Last check at {curr_time}')
 
 ## ##
-
-# Version Info On Screen print out#
-print("** Weather Alert App. Version 1 Working Branch **\n")
-sleep_time = int(input("How long between checks(300 = 5 min): "))
-state = input("What state are we watching(all caps abbr): ").upper()
+# Variables
 counter = 0
+sleep_time = 240
+stat = 'MO'
+local_alert = False
+run = False # close out org loop
+# Version Info On Screen print out#
+print("** Weather Alert App. Version 1 warning Branch **\n")
+# sleep_time = int(input("How long between checks(300 = 5 min): "))
+# state = input("What state are we watching(all caps abbr): ").upper()
+
 
 
 ### Main Loop ###
-while (True):
-    now = time.asctime(time.localtime(time.time()))
+while (run):
+    curr_time = time.asctime(time.localtime(time.time())) # grab time of last refresh
     counter += 1
+
     # Gets info and stores it into variables
     response = requests.get(get_url_state(state))    
     alert_data = response.json()
@@ -75,7 +83,7 @@ while (True):
     alert_data_ids = alert_data['features']
 
     _ = system('cls') # clears the screen for new updated info
-    print(f'Check #{counter} every {sleep_time} sec, at {now}, Showing Watches/Warns for {state}')
+    print(f'Check #{counter} every {sleep_time} sec, at {curr_time}, Showing Watches/Warns for {state}')
 
     for alert in alert_data_ids:
         if (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
@@ -95,3 +103,44 @@ while (True):
 
     # How long till recheck    
     time.sleep(sleep_time)
+
+
+## Start up ##
+print("** Weather Alert App. Version ?? warning Branch **\n")
+#sleep_time = int(input("How long between checks(300 = 5 min): "))
+#state = input("What state are we watching(all caps abbr): ").upper()
+
+#!! New Main Loop !!#
+while(True):
+
+    _ = system('cls') # clears the screen for new updated info
+    curr_time = time.asctime(time.localtime(time.time())) # grab time of last refresh
+
+    # Gets info and stores it into variables
+    #response = requests.get(get_url_state(state))   
+    response = requests.get(get_url_us()) 
+    alert_data = response.json()
+    alert_data_ids = alert_data['features']
+
+    for alert in alert_data_ids:
+         #if my county\city then priority to thoes alerts
+        if("Lee's Summit" in alert['properties']['description'] or 'Jackson, MO' in alert['properties']['areaDesc']):
+            print("--->!!! ALERT AFFECTING CITY\COUNTY !!!<---")
+            local_alert = True
+            display_alert(alert)
+        # if state MO/KS Priority over US
+        elif('MO' in alert['properties']['areaDesc'] and not local_alert):
+            print("!@@@State Alerts@@!")
+        # else do the whole US
+        
+        #print(alert['properties']['event'])
+        #if(alert['properties']['event'].lower() == 'special weather statement'):
+            #print(display_alert(alert))
+    # Reset alerts
+    local_alert = False
+    # Reccheck Timer
+    time.sleep(sleep_time)
+
+
+# order 
+# special weather statement - fills in the gaps of missing advisaries
