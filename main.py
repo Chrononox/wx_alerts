@@ -61,8 +61,13 @@ def display_alert(alert, color = '\033[0m'):
 # Variables
 counter = 0
 sleep_time = 240
-stat = 'MO'
 local_alert = False
+state_alert = False
+
+city = "Lee's Summit"
+county = "Jackson, MO"
+state = "'MO"
+
 run = False # close out org loop
 # Version Info On Screen print out#
 print("** Weather Alert App. Version 1 warning Branch **\n")
@@ -124,18 +129,19 @@ while(True):
 
     for alert in alert_data_ids:
          #if my county\city then priority to thoes alerts
-        if("Lee's Summit" in alert['properties']['description'] or 'Jackson, MO' in alert['properties']['areaDesc']):
+        if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):
             print("--->!!! ALERT AFFECTING CITY\COUNTY !!!<---")
-            local_alert = True
             display_alert(alert)
         # if state MO/KS Priority over US
-        elif('MO' in alert['properties']['areaDesc'] and not local_alert):
+        elif(state in alert['properties']['areaDesc'] and not local_alert):
             print("!@@@State Alerts@@!")
         # else do the whole US
-        
-        #print(alert['properties']['event'])
-        #if(alert['properties']['event'].lower() == 'special weather statement'):
-            #print(display_alert(alert))
+
+
+
+  
+    
+
     # Reset alerts
     local_alert = False
     # Reccheck Timer
