@@ -118,7 +118,7 @@ while(True):
 
     # Gets info and stores it into variables
     #response = requests.get(get_url_state(state))   
-    response = requests.get(get_url_us()) 
+    response = requests.get(get_url_state('MO')) 
     alert_data = response.json()
     alert_data_ids = alert_data['features']
 
