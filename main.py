@@ -5,26 +5,37 @@
 #       Set Home and prioritize home alerts
 #       Re-Evaluate info to be shown and display formatting
 #       Make better comments and notes
+#       More useful info Number of warnings and watches in area
 
 # Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
 # Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
 
-#
+# TODO:  ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE, ADD DEFAULT VALUES
+
+
+# Imports
 import json
 import requests
 import time
 from os import system, name
 import winsound
 
-# TODO:  ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE, ADD DEFAULT VALUES
+## FUNCTIONS ##
 
+# Plays sounds
 def play_sound(frequency = 2500, duration = 1000):
     winsound.Beep(frequency, duration)
 
-def get_url(state):
+# Grabs form the alerts for the state alone
+def get_url_state(state = 'MO'):
     temp = (f'https://api.weather.gov/alerts/active/area/{state}')
     return temp
+# Grabs from the alerts for the whole US
+def get_url_us():
+    temp = (f'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land')
+    return temp
 
+# Controls what the display looks like
 def display_alert(alert, color):
     print('\n\n--------------------------------------------------')
     if ('Jackson, MO' in alert['properties']['areaDesc']):
@@ -41,11 +52,12 @@ def display_alert(alert, color):
     if ('Jackson, MO' in alert['properties']['areaDesc']):
         print('\033[91m')
         print("---> THIS IS YOU!! <---")
-        print('\033[0m')
-   
+        print('\033[0m')   
     print(f'Last check at {now}')
 
-# Version Info #
+## ##
+
+# Version Info On Screen print out#
 print("** Weather Alert App. Version 1 Working Branch **\n")
 sleep_time = int(input("How long between checks(300 = 5 min): "))
 state = input("What state are we watching(all caps abbr): ").upper()
@@ -57,7 +69,7 @@ while (True):
     now = time.asctime(time.localtime(time.time()))
     counter += 1
     # Gets info and stores it into variables
-    response = requests.get(get_url(state))    
+    response = requests.get(get_url_state(state))    
     alert_data = response.json()
 
     alert_data_ids = alert_data['features']
