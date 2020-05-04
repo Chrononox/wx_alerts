@@ -36,9 +36,9 @@ def get_url_us():
     return temp
 
 # Controls what the display looks like
-def display_alert(alert, message = '', color = '\033[0m'):
+def display_alert(alert, color = '\033[0m'):
     print('\n\n--------------------------------------------------')
-    print(message)
+    #print(message)
     print(f"{alert['properties']['severity']} -- {alert['properties']['response']}")
     print(f'{color}')
     print(f"{alert['properties']['event']}")
@@ -47,7 +47,24 @@ def display_alert(alert, message = '', color = '\033[0m'):
     print(f"\nArea:\n{alert['properties']['instruction']}")
     print(f"\nArea:\n{alert['properties']['areaDesc']}")
     
+def effects(alert):
+    warn_found = False
+    if (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
+        play_sound(1000, 500)
+        warn_found = True
+        display_alert(alert, '\033[31m')
+        
+    if (alert['properties']['event'] == 'Severe Thunderstorm Watch' and warn_found == False):
+        display_alert(alert, '\033[33m')
+        
+    if (alert['properties']['event'] == 'Tornado Warning'):
+        play_sound(2400,1000)
+        warn_found = True
+        display_alert(alert, '\033[95m')
 
+    if (alert['properties']['event'] == 'Tornado Watch' and warn_found == False):
+        play_sound(200, 500)
+        display_alert(alert, '\033[96m')
 
     ## ##
 # Variables
@@ -62,9 +79,6 @@ county = "Jackson, MO"
 state = "MO"
 
 ## Start up ##
-#print("** Weather Alert App. Version ?? warning Branch **\n")
-#sleep_time = int(input("How long between checks(300 = 5 min): "))
-#state = input("What state are we watching(all caps abbr): ").upper()
 
 
 #!! Main Loop !!#
@@ -79,23 +93,31 @@ while(True):
     alert_data_ids = alert_data['features']
 
     # City/County then State then US -working
-    if(local_alert):
-        for alert in alert_data_ids:
-            if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):                
-                local_alert = True
-                display_alert(alert)
-    if(not local_alert):
+    #print("Looking for " + city + " & " + county)
+    for alert in alert_data_ids:
+        if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):
+            local_alert = True
+            #display_alert(alert)
+            effects(alert)
+            
+        
+    if(local_alert == False):
+        #print("Looking for " + state)
         for alert in alert_data_ids:
             if(state in alert['properties']['description']):
                 state_alert = True
-                display_alert(alert)
-    if(not local_alert and not state_alert):
+                #display_alert(alert)
+                effects(alert)
+
+    if(local_alert == False and state_alert == False):
         response = requests.get(get_url_us())
         alert_data = response.json()
         alert_data_ids = alert_data['features']
 
         for alert in alert_data_ids:
-            display_alert(alert)
+            #display_alert(alert)
+            effects(alert)
+
     print(f'\nLast check at {curr_time}')
 
      # Reset alerts
