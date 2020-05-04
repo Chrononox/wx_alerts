@@ -47,24 +47,23 @@ def display_alert(alert, color = '\033[0m'):
     print(f"\nArea:\n{alert['properties']['instruction']}")
     print(f"\nArea:\n{alert['properties']['areaDesc']}")
     
+    # applies color and sound effects to different warn/watch types 
 def effects(alert):
-    warn_found = False
-    if (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
-        play_sound(1000, 500)
-        warn_found = True
-        display_alert(alert, '\033[31m')
-        
-    if (alert['properties']['event'] == 'Severe Thunderstorm Watch' and warn_found == False):
-        display_alert(alert, '\033[33m')
-        
+             
     if (alert['properties']['event'] == 'Tornado Warning'):
         play_sound(2400,1000)
-        warn_found = True
         display_alert(alert, '\033[95m')
 
+    if (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
+        play_sound(1000, 500)
+        display_alert(alert, '\033[31m')
+    
     if (alert['properties']['event'] == 'Tornado Watch' and warn_found == False):
         play_sound(200, 500)
         display_alert(alert, '\033[96m')
+        
+    if (alert['properties']['event'] == 'Severe Thunderstorm Watch' and warn_found == False and tor_found == False):
+        display_alert(alert, '\033[33m')
 
     ## ##
 # Variables
