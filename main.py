@@ -4,7 +4,7 @@
 #       Remember active seen alerts to avoid re-beeps
 #       Need to prioritize T-warn over all and s-war/ t-watch over s-watch, 
 #       Need to make sure special weather statemens are getting thouugh
-#       need to make sure we are getting most local info i.e. wind, freeze, etc.
+#       need to make sure we are getting most local info i.e.'Freeze Warning', 'High Wind Warning', 'Excessive Heat Warning', 'Fire Weather Warning', Special Weather Statement'
 #       Set Home and prioritize home alerts -- This is complete
 #       Re-Evaluate info to be shown and display formatting -- working
 #       Make better comments and notes
@@ -47,7 +47,7 @@ def display_alert(alert, color = '\033[0m'):
     print(f"{alert['properties']['event']}")
     print('\033[0m')    
     print(f"\nHeadline:\n{alert['properties']['headline']}")
-    print(f"\nArea:\n{alert['properties']['instruction']}")
+    print(f"\nInstruction:\n{alert['properties']['instruction']}")
     print(f"\nArea:\n{alert['properties']['areaDesc']}")
     
 # applies color and sound effects to different warn/watch types 
@@ -67,6 +67,9 @@ def effects(alert):
         
     if (alert['properties']['event'] == 'Severe Thunderstorm Watch'):
         display_alert(alert, '\033[33m')
+    else:
+        display_alert(alert)
+
 
     ## ##
 # Variables
@@ -74,17 +77,24 @@ counter = 0
 sleep_time = 240
 local_alert = False
 state_alert = False
+run = True
+current_alerts = []
 
 ## adjustable vars ##
 city = "Lee's Summit"
 county = "Jackson, MO"
-state = "MO"
+state = "NY"
 
 ## Start up ##
+#_ = system('cls') # clears the screen for new updated info
+#prompt = input("Weather alerts v2. enter to continue (debug):")
 
+# if(prompt.lower() == 'debug'):
+#     run = False
+#     debug_mode()
 
 #!! Main Loop !!#
-while(True):
+while(run):
 
     _ = system('cls') # clears the screen for new updated info
     curr_time = time.asctime(time.localtime(time.time())) # grab time of last refresh
@@ -95,33 +105,38 @@ while(True):
     alert_data_ids = alert_data['features']
 
     # City/County then State then US -working
-    #print("Looking for " + city + " & " + county)
+    print("Looking for " + city + " & " + county)
     for alert in alert_data_ids:
         if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):
             local_alert = True
             #display_alert(alert)
+            current_alerts.append(alert['id'])
             effects(alert)            
         
     if(local_alert == False):
-        #print("Looking for " + state)
+        print("Looking for " + state)
         for alert in alert_data_ids:
             if(state in alert['properties']['description']):
                 state_alert = True
                 #display_alert(alert)
+                current_alerts.append(alert['id'])
                 effects(alert)
 
     if(local_alert == False and state_alert == False):
+        print("EVERYWHERE...")
         response = requests.get(get_url_us())
         alert_data = response.json()
         alert_data_ids = alert_data['features']
 
         for alert in alert_data_ids:
             #display_alert(alert)
+            current_alerts.append(alert['id'])
             effects(alert)
 
     print(f'\nLast check at {curr_time}')
-
-     # Reset alerts
+    for id in current_alerts:
+        print(id)
+    # Reset alerts
     local_alert = False
     # Reccheck Timer
     time.sleep(sleep_time)
