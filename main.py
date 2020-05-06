@@ -120,7 +120,7 @@ strm_test = {
 ## adjustable vars ##
 city = "Lee's Summit"
 county = "Jackson, MO"
-state = "MO"
+state = "TX"
 
 ## Start up ##
 _ = system('cls') # clears the screen for new updated info
@@ -152,7 +152,7 @@ while(run):
     if(local_alert == False):
         print("Looking for " + state)
         for alert in alert_data_ids:
-            if(state in alert['properties']['description']):
+            if(state in alert['properties']['description'] or state in alert['properties']['areaDesc']):
                 state_alert = True
                 current_alerts.append(alert['id'])
                 effects(alert)
