@@ -9,11 +9,11 @@
 #       Re-Evaluate info to be shown and display formatting -- working
 #       Make better comments and notes
 #       More useful info Number of warnings and watches in area
+#       Colors ansi codes '\033[0m' set up color variables please
 
 # Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
 # Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
 
-# TODO:  ADD COUNTY FILTER FOR HOME SETTING, CLEAN UP CODE, ADD DEFAULT VALUES
 
 # Imports
 import json
@@ -57,19 +57,35 @@ def effects(alert):
         play_sound(2400,1000)
         display_alert(alert, '\033[95m')
 
-    if (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
+    elif (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
         play_sound(1000, 500)
         display_alert(alert, '\033[31m')
     
-    if (alert['properties']['event'] == 'Tornado Watch'):
+    elif (alert['properties']['event'] == 'Tornado Watch'):
         play_sound(200, 500)
         display_alert(alert, '\033[96m')
         
-    if (alert['properties']['event'] == 'Severe Thunderstorm Watch'):
+    elif (alert['properties']['event'] == 'Severe Thunderstorm Watch'):
         display_alert(alert, '\033[33m')
     else:
         display_alert(alert)
 
+def debug_mode():
+    print("\n\n^.^ DEBUG MODE ^.^\n\n")
+    val = input('^.^_')
+
+    if val.lower() == 'test -t':
+        print("Running fake - Tor Warn")
+        effects(tor_test)
+    elif val.lower() == 'test -s':
+        print("Running fake - Storm Warn")
+        effects(strm_test)
+    elif (val.lower() == 'print'):
+        print(tor_test)
+
+    elif val.lower() == 'help':
+        print('\ntest - run test')
+        print('\nprint - print alert')
 
     ## ##
 # Variables
@@ -79,19 +95,40 @@ local_alert = False
 state_alert = False
 run = True
 current_alerts = []
+tor_test = {
+    "properties":{
+        "areaDesc": "Lee's Summit",
+        "event": "Tornado Warning",
+        "headline":"THIS IS A TEST",
+        "instruction":"DO NOTHING",
+        "response": "TEST",
+        "severity": "TEST"
+    }
+}
+strm_test = {
+    "properties":{
+        "areaDesc": "Lee's Summit",
+        "event": "Severe Thunderstorm Warning",
+        "headline":"THIS IS A TEST",
+        "instruction":"DO NOTHING",
+        "response": "TEST",
+        "severity": "TEST"
+    }
+}
+
 
 ## adjustable vars ##
 city = "Lee's Summit"
 county = "Jackson, MO"
-state = "NY"
+state = "MO"
 
 ## Start up ##
-#_ = system('cls') # clears the screen for new updated info
-#prompt = input("Weather alerts v2. enter to continue (debug):")
+_ = system('cls') # clears the screen for new updated info
+prompt = input("Weather alerts v2. enter to continue (debug):")
 
-# if(prompt.lower() == 'debug'):
-#     run = False
-#     debug_mode()
+if(prompt.lower() == 'debug'):
+    run = False
+    debug_mode()
 
 #!! Main Loop !!#
 while(run):
@@ -109,7 +146,6 @@ while(run):
     for alert in alert_data_ids:
         if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):
             local_alert = True
-            #display_alert(alert)
             current_alerts.append(alert['id'])
             effects(alert)            
         
@@ -118,7 +154,6 @@ while(run):
         for alert in alert_data_ids:
             if(state in alert['properties']['description']):
                 state_alert = True
-                #display_alert(alert)
                 current_alerts.append(alert['id'])
                 effects(alert)
 
@@ -129,13 +164,11 @@ while(run):
         alert_data_ids = alert_data['features']
 
         for alert in alert_data_ids:
-            #display_alert(alert)
             current_alerts.append(alert['id'])
             effects(alert)
 
     print(f'\nLast check at {curr_time}')
-    for id in current_alerts:
-        print(id)
+
     # Reset alerts
     local_alert = False
     # Reccheck Timer
