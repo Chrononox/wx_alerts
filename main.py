@@ -10,6 +10,7 @@
 #       Make better comments and notes
 #       More useful info Number of warnings and watches in area
 #       Colors ansi codes '\033[0m' set up color variables please
+#       Display message when no data found(no net connection)
 
 # Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
 # Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
@@ -82,10 +83,13 @@ def debug_mode():
         effects(strm_test)
     elif (val.lower() == 'print'):
         print(tor_test)
+    elif(val.lower() == 'set -state'):
+        print("nah")
 
     elif val.lower() == 'help':
-        print('\ntest - run test')
-        print('\nprint - print alert')
+        print('\ntest -s,-t - run test')
+        print('\nprint - print alert') 
+        print("\nset -state")
 
     ## ##
 # Variables
@@ -120,7 +124,7 @@ strm_test = {
 ## adjustable vars ##
 city = "Lee's Summit"
 county = "Jackson, MO"
-state = "TX"
+state = "MO"
 
 ## Start up ##
 _ = system('cls') # clears the screen for new updated info
@@ -138,34 +142,37 @@ while(run):
 
     # Gets info and stores it into variables   
     response = requests.get(get_url_state(state)) 
-    alert_data = response.json()
-    alert_data_ids = alert_data['features']
-
-    # City/County then State then US -working
-    print("Looking for " + city + " & " + county)
-    for alert in alert_data_ids:
-        if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):
-            local_alert = True
-            current_alerts.append(alert['id'])
-            effects(alert)            
-        
-    if(local_alert == False):
-        print("Looking for " + state)
-        for alert in alert_data_ids:
-            if(state in alert['properties']['description'] or state in alert['properties']['areaDesc']):
-                state_alert = True
-                current_alerts.append(alert['id'])
-                effects(alert)
-
-    if(local_alert == False and state_alert == False):
-        print("EVERYWHERE...")
-        response = requests.get(get_url_us())
+    if(response):
         alert_data = response.json()
         alert_data_ids = alert_data['features']
 
+        # City/County then State then US -working
+        print("Looking for " + city + " & " + county)
         for alert in alert_data_ids:
-            current_alerts.append(alert['id'])
-            effects(alert)
+            if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):
+                local_alert = True
+                current_alerts.append(alert['id'])
+                effects(alert)            
+            
+        if(local_alert == False):
+            print("Looking for " + state)
+            for alert in alert_data_ids:
+                if(state in alert['properties']['description'] or state in alert['properties']['areaDesc']):
+                    state_alert = True
+                    current_alerts.append(alert['id'])
+                    effects(alert)
+
+        if(local_alert == False and state_alert == False):
+            print("EVERYWHERE...")
+            response = requests.get(get_url_us())
+            alert_data = response.json()
+            alert_data_ids = alert_data['features']
+
+            for alert in alert_data_ids:
+                current_alerts.append(alert['id'])
+                effects(alert)
+    else:
+        print("No Response, Will try again soon")
 
     print(f'\nLast check at {curr_time}')
 
