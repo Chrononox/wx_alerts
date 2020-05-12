@@ -10,7 +10,6 @@
 #       Make better comments and notes
 #       More useful info Number of warnings and watches in area
 #       Colors ansi codes '\033[0m' set up color variables please
-#       Display message when no data found(no net connection)
 
 # Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
 # Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
@@ -23,75 +22,7 @@ import time
 from os import system, name
 import winsound
 
-## FUNCTIONS ##
 
-# Plays sounds
-def play_sound(frequency = 2500, duration = 1000):
-    winsound.Beep(frequency, duration)
-
-# Grabs form the alerts for the state alone
-def get_url_state(state):
-    temp = (f'https://api.weather.gov/alerts/active/area/{state}')
-    return temp
-
-# Grabs from the alerts for the whole US
-def get_url_us():
-    temp = (f'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land')
-    return temp
-
-# Controls what the display looks like
-def display_alert(alert, color = '\033[0m'):
-    print('\n\n--------------------------------------------------')
-    #print(message)
-    print(f"{alert['properties']['severity']} -- {alert['properties']['response']}")
-    print(f'{color}')
-    print(f"{alert['properties']['event']}")
-    print('\033[0m')    
-    print(f"\nHeadline:\n{alert['properties']['headline']}")
-    print(f"\nInstruction:\n{alert['properties']['instruction']}")
-    print(f"\nArea:\n{alert['properties']['areaDesc']}")
-    
-# applies color and sound effects to different warn/watch types 
-def effects(alert):
-             
-    if (alert['properties']['event'] == 'Tornado Warning'):
-        play_sound(2400,1000)
-        display_alert(alert, '\033[95m')
-
-    elif (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
-        play_sound(1000, 500)
-        display_alert(alert, '\033[31m')
-    
-    elif (alert['properties']['event'] == 'Tornado Watch'):
-        play_sound(200, 500)
-        display_alert(alert, '\033[96m')
-        
-    elif (alert['properties']['event'] == 'Severe Thunderstorm Watch'):
-        display_alert(alert, '\033[33m')
-    else:
-        display_alert(alert)
-
-def debug_mode():
-    print("\n\n^.^ DEBUG MODE ^.^\n\n")
-    val = input('^.^_')
-
-    if val.lower() == 'test -t':
-        print("Running fake - Tor Warn")
-        effects(tor_test)
-    elif val.lower() == 'test -s':
-        print("Running fake - Storm Warn")
-        effects(strm_test)
-    elif (val.lower() == 'print'):
-        print(tor_test)
-    elif(val.lower() == 'set -state'):
-        print("nah")
-
-    elif val.lower() == 'help':
-        print('\ntest -s,-t - run test')
-        print('\nprint - print alert') 
-        print("\nset -state")
-
-    ## ##
 # Variables
 counter = 0
 sleep_time = 240
@@ -99,6 +30,11 @@ local_alert = False
 state_alert = False
 run = True
 current_alerts = []
+
+twarn_color = '\033[95m'
+twatch_color = '\033[96m'
+swarn_color = '\033[31m'
+swatch_color = '\033[33m'
 tor_test = {
     "properties":{
         "areaDesc": "Lee's Summit",
@@ -126,6 +62,75 @@ city = "Lee's Summit"
 county = "Jackson, MO"
 state = "MO"
 
+## FUNCTIONS ##
+
+# Plays sounds
+def play_sound(frequency = 2500, duration = 1000):
+    winsound.Beep(frequency, duration)
+
+# Grabs form the alerts for the state alone
+def get_url_state(state):
+    temp = (f'https://api.weather.gov/alerts/active/area/{state}')
+    return temp
+
+# Grabs from the alerts for the whole US
+def get_url_us():
+    temp = (f'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land')
+    return temp
+
+# Controls what the display looks like
+def display_alert(alert, color = '\033[0m'):
+    print('\n\n--------------------------------------------------')
+    #print(message)
+    print(f"{alert['properties']['severity']} -- {alert['properties']['response']}")
+    print(f'{color}')
+    print(f"{alert['properties']['event']}")
+    print(f'{color}')    
+    print(f"\nHeadline:\n{alert['properties']['headline']}")
+    print(f"\nInstruction:\n{alert['properties']['instruction']}")
+    print(f"\nArea:\n{alert['properties']['areaDesc']}")
+    
+# applies color and sound effects to different warn/watch types 
+def effects(alert):
+             
+    if (alert['properties']['event'] == 'Tornado Warning'):
+        play_sound(2400,1000)
+        display_alert(alert, twarn_color)
+
+    elif (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
+        play_sound(1000, 500)
+        display_alert(alert, swarn_color)
+    
+    elif (alert['properties']['event'] == 'Tornado Watch'):
+        play_sound(200, 500)
+        display_alert(alert, twatch_color)
+        
+    elif (alert['properties']['event'] == 'Severe Thunderstorm Watch'):
+        display_alert(alert, swatch_color)
+    else:
+        display_alert(alert)
+
+def debug_mode():
+    print("\n\n^.^ DEBUG MODE ^.^\n\n")
+    val = input('^.^_')
+
+    if val.lower() == 'test -t':
+        print("Running fake - Tor Warn")
+        effects(tor_test)
+    elif val.lower() == 'test -s':
+        print("Running fake - Storm Warn")
+        effects(strm_test)
+    elif (val.lower() == 'print'):
+        print(tor_test)
+    elif(val.lower() == 'set -state'):
+        print("nah")
+
+    elif val.lower() == 'help':
+        print('\ntest -s,-t - run test')
+        print('\nprint - print alert') 
+        print("\nset -state")
+
+
 ## Start up ##
 _ = system('cls') # clears the screen for new updated info
 prompt = input("Weather alerts v2. enter to continue (debug):")
@@ -141,8 +146,10 @@ while(run):
     curr_time = time.asctime(time.localtime(time.time())) # grab time of last refresh
 
     # Gets info and stores it into variables   
+    print("Checking...")
     response = requests.get(get_url_state(state)) 
     if(response):
+        _ = system('cls') # clears the screen for new updated info
         alert_data = response.json()
         alert_data_ids = alert_data['features']
 
@@ -172,7 +179,9 @@ while(run):
                 current_alerts.append(alert['id'])
                 effects(alert)
     else:
+        _ = system('cls') # clears the screen for new updated info
         print("No Response, Will try again soon")
+        print(f"\n{response}")
 
     print(f'\nLast check at {curr_time}')
 
