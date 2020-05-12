@@ -33,12 +33,12 @@ current_alerts = []
 tw = 'Tornado Warning'
 twa = 'Tornado Watch'
 sw = 'Severe Thunderstorm Warning'
-swa = 'Severe Thunderson Watch'
+swa = 'Severe Thunderstorm Watch'
 fw = 'Freeze Warning'
 ww = 'High Wind Warning'
 eh = 'Excessive Heat Warning'
 fire = 'Fire Weather Warning'
-sws = 'Speacial Weather Statement'
+sws = 'Special Weather Statement'
 
 
 twarn_color = '\033[95m'
