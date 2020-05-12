@@ -9,7 +9,6 @@
 #       Re-Evaluate info to be shown and display formatting -- working
 #       Make better comments and notes
 #       More useful info Number of warnings and watches in area
-#       Colors ansi codes '\033[0m' set up color variables please
 
 # Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
 # Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
@@ -31,10 +30,22 @@ state_alert = False
 run = True
 current_alerts = []
 
+tw = 'Tornado Warning'
+twa = 'Tornado Watch'
+sw = 'Severe Thunderstorm Warning'
+swa = 'Severe Thunderson Watch'
+fw = 'Freeze Warning'
+ww = 'High Wind Warning'
+eh = 'Excessive Heat Warning'
+fire = 'Fire Weather Warning'
+sws = 'Speacial Weather Statement'
+
+
 twarn_color = '\033[95m'
 twatch_color = '\033[96m'
 swarn_color = '\033[31m'
 swatch_color = '\033[33m'
+
 tor_test = {
     "properties":{
         "areaDesc": "Lee's Summit",
@@ -55,7 +66,6 @@ strm_test = {
         "severity": "TEST"
     }
 }
-
 
 ## adjustable vars ##
 city = "Lee's Summit"
@@ -85,7 +95,7 @@ def display_alert(alert, color = '\033[0m'):
     print(f"{alert['properties']['severity']} -- {alert['properties']['response']}")
     print(f'{color}')
     print(f"{alert['properties']['event']}")
-    print(f'{color}')    
+    print('\033[0m')    
     print(f"\nHeadline:\n{alert['properties']['headline']}")
     print(f"\nInstruction:\n{alert['properties']['instruction']}")
     print(f"\nArea:\n{alert['properties']['areaDesc']}")
@@ -146,7 +156,7 @@ while(run):
     curr_time = time.asctime(time.localtime(time.time())) # grab time of last refresh
 
     # Gets info and stores it into variables   
-    print("Checking...")
+    print("Checking for alerts...")
     response = requests.get(get_url_state(state)) 
     if(response):
         _ = system('cls') # clears the screen for new updated info
@@ -156,28 +166,39 @@ while(run):
         # City/County then State then US -working
         print("Looking for " + city + " & " + county)
         for alert in alert_data_ids:
-            if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):
-                local_alert = True
-                current_alerts.append(alert['id'])
-                effects(alert)            
-            
+            if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):                 
+                
+                thing  = alert['properties']['event']
+                if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
+                    
+                    current_alerts.append(alert['id'])
+                    effects(alert)
+                    local_alert = True     
+
         if(local_alert == False):
             print("Looking for " + state)
             for alert in alert_data_ids:
                 if(state in alert['properties']['description'] or state in alert['properties']['areaDesc']):
-                    state_alert = True
-                    current_alerts.append(alert['id'])
-                    effects(alert)
+                    
+                    thing  = alert['properties']['event']
+                    if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
+                        state_alert = True
+                        current_alerts.append(alert['id'])
+                        effects(alert)
 
         if(local_alert == False and state_alert == False):
-            print("EVERYWHERE...")
+            _ = system('cls') # clears the screen for new updated info
+            print("CHECKING EVERYWHERE...")
             response = requests.get(get_url_us())
             alert_data = response.json()
             alert_data_ids = alert_data['features']
 
             for alert in alert_data_ids:
-                current_alerts.append(alert['id'])
-                effects(alert)
+                thing  = alert['properties']['event']
+                #if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
+                if (thing == tw or thing == twa or thing == sw or thing == swa or thing == sws):
+                    current_alerts.append(alert['id'])
+                    effects(alert)
     else:
         _ = system('cls') # clears the screen for new updated info
         print("No Response, Will try again soon")
