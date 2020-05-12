@@ -2,13 +2,7 @@
 
 # TODO: Allow nationwide or per state (?multi-state?) -- This is now all automatic
 #       Remember active seen alerts to avoid re-beeps
-#       Need to prioritize T-warn over all and s-war/ t-watch over s-watch, 
 #       Need to make sure special weather statemens are getting thouugh
-#       need to make sure we are getting most local info i.e.'Freeze Warning', 'High Wind Warning', 'Excessive Heat Warning', 'Fire Weather Warning', Special Weather Statement'
-#       Set Home and prioritize home alerts -- This is complete
-#       Re-Evaluate info to be shown and display formatting -- working
-#       Make better comments and notes
-#       More useful info Number of warnings and watches in area
 
 # Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
 # Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
@@ -143,7 +137,7 @@ def debug_mode():
 
 ## Start up ##
 _ = system('cls') # clears the screen for new updated info
-prompt = input("Weather alerts v2. enter to continue (debug):")
+prompt = input("Weather alerts v2. enter to continue:")
 
 if(prompt.lower() == 'debug'):
     run = False
@@ -190,15 +184,20 @@ while(run):
             _ = system('cls') # clears the screen for new updated info
             print("CHECKING EVERYWHERE...")
             response = requests.get(get_url_us())
-            alert_data = response.json()
-            alert_data_ids = alert_data['features']
+            if(response):
+                alert_data = response.json()
+                alert_data_ids = alert_data['features']
 
-            for alert in alert_data_ids:
-                thing  = alert['properties']['event']
-                #if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
-                if (thing == tw or thing == twa or thing == sw or thing == swa or thing == sws):
-                    current_alerts.append(alert['id'])
-                    effects(alert)
+                for alert in alert_data_ids:
+                    thing  = alert['properties']['event']
+                    #if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
+                    if (thing == tw or thing == twa or thing == sw or thing == swa or thing == sws):
+                        current_alerts.append(alert['id'])
+                        effects(alert)
+            else:
+                _ = system('cls') # clears the screen for new updated info
+                print("No Response, Will try again soon")
+                print(f"\n{response}")
     else:
         _ = system('cls') # clears the screen for new updated info
         print("No Response, Will try again soon")
