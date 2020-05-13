@@ -21,6 +21,7 @@ counter = 0
 sleep_time = 240
 local_alert = False
 state_alert = False
+all_alert = False
 run = True
 current_alerts = []
 
@@ -33,6 +34,7 @@ ww = 'High Wind Warning'
 eh = 'Excessive Heat Warning'
 fire = 'Fire Weather Warning'
 sws = 'Special Weather Statement'
+sws = 'removed for test'
 
 
 twarn_color = '\033[95m'
@@ -98,6 +100,7 @@ def display_alert(alert, color = '\033[0m'):
 def effects(alert):
              
     if (alert['properties']['event'] == 'Tornado Warning'):
+        #if(current_alerts == alert['properties']['id'])
         play_sound(2400,1000)
         display_alert(alert, twarn_color)
 
@@ -193,6 +196,7 @@ while(run):
                     #if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
                     if (thing == tw or thing == twa or thing == sw or thing == swa or thing == sws):
                         current_alerts.append(alert['id'])
+                        all_alert = True
                         effects(alert)
             else:
                 _ = system('cls') # clears the screen for new updated info
@@ -203,6 +207,9 @@ while(run):
         print("No Response, Will try again soon")
         print(f"\n{response}")
 
+    if(all_alert == False):
+        _ = system('cls') # clears the screen for new updated info
+        print("All Clear right now. Checking again soon ^.^")
     print(f'\nLast check at {curr_time}')
 
     # Reset alerts
