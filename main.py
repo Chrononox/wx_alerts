@@ -109,6 +109,7 @@ def effects(alert):
     else:
         display_alert(alert)
 
+# used for testing colors and sounds and such
 def debug_mode():
     print("\n\n^.^ DEBUG MODE ^.^\n\n")
     val = input('^.^_')
@@ -146,7 +147,8 @@ while(run):
     # Gets info and stores it into variables   
     print("Checking for alerts...")
     response = requests.get(get_url_state(state)) 
-    if(response):
+    if(response == 200):
+       
         _ = system('cls') # clears the screen for new updated info
         alert_data = response.json()
         alert_data_ids = alert_data['features']
@@ -178,7 +180,8 @@ while(run):
             _ = system('cls') # clears the screen for new updated info
             print("CHECKING EVERYWHERE...")
             response = requests.get(get_url_us())
-            if(response):
+            if(response['properties']['status'] == '200'):
+                print(response)
                 alert_data = response.json()
                 alert_data_ids = alert_data['features']
 
@@ -200,13 +203,13 @@ while(run):
 
     if(all_alert == False):
         _ = system('cls') # clears the screen for new updated info
-        print("All Clear right now. Checking again soon ^.^")
+        print("^.^ All Clear right now. Checking again soon ^.^")
     print(f'\nLast check at {curr_time}')
 
     # Reset alerts
     local_alert = False
     state_alert = False
     all_alert = False
-    
+
     # Reccheck Timer
     time.sleep(sleep_time)
