@@ -16,7 +16,7 @@ sleep_time = 240
 local_alert = False
 state_alert = False
 all_alert = False
-run = True
+run = True     # TURNS THE MAIN LOOP ON AND OFF
 current_alerts = []
 
 tw = 'Tornado Warning'
@@ -139,34 +139,32 @@ if(prompt.lower() == 'debug'):
     debug_mode()
 
 ##!! Main Loop !!##
+
 while(run):
 
     _ = system('cls') # clears the screen for new updated info
     curr_time = time.asctime(time.localtime(time.time())) # grab time of last refresh
 
-    # Gets info and stores it into variables   
-    print("Checking for alerts...")
-    response = requests.get(get_url_state(state)) 
-    if(response == 200):
-       
+    print("Checking for local alerts...")
+    response = requests.get(get_url_state(state))
+
+    if (response == 200):
+        print("Good Response", response)
         _ = system('cls') # clears the screen for new updated info
         alert_data = response.json()
         alert_data_ids = alert_data['features']
-
-        # City/County then State then US -working
-        print("Looking for " + city + " & " + county)
+        
+        # City/County then State then US
         for alert in alert_data_ids:
             if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):                 
                 
                 thing  = alert['properties']['event']
-                if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
-                    
+                if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):    
                     current_alerts.append(alert['id'])
                     effects(alert)
-                    local_alert = True     
+                    local_alert = True
 
         if(local_alert == False):
-            print("Looking for " + state)
             for alert in alert_data_ids:
                 if(state in alert['properties']['description'] or state in alert['properties']['areaDesc']):
                     
@@ -175,12 +173,12 @@ while(run):
                         state_alert = True
                         current_alerts.append(alert['id'])
                         effects(alert)
-
+        
         if(local_alert == False and state_alert == False):
             _ = system('cls') # clears the screen for new updated info
             print("CHECKING EVERYWHERE...")
             response = requests.get(get_url_us())
-            if(response['properties']['status'] == '200'):
+            if(response == 200):
                 print(response)
                 alert_data = response.json()
                 alert_data_ids = alert_data['features']
@@ -195,15 +193,19 @@ while(run):
             else:
                 _ = system('cls') # clears the screen for new updated info
                 print("No Response, Will try again soon")
-                print(f"\n{response}")
+                all_alert == True
+                print("Bad Response", response)
+
     else:
         _ = system('cls') # clears the screen for new updated info
-        print("No Response, Will try again soon")
-        print(f"\n{response}")
+        print("No local Response, Will try again soon")
+        all_alert == True
+        print("Bad Response", response)
 
-    if(all_alert == False):
-        _ = system('cls') # clears the screen for new updated info
-        print("^.^ All Clear right now. Checking again soon ^.^")
+    if(all_alert):
+        print("^.^ All Clear Right Now. Checking Again Soon ^.^")
+        print(response)
+
     print(f'\nLast check at {curr_time}')
 
     # Reset alerts
@@ -213,3 +215,79 @@ while(run):
 
     # Reccheck Timer
     time.sleep(sleep_time)
+
+
+# while(run):
+
+#     _ = system('cls') # clears the screen for new updated info
+#     curr_time = time.asctime(time.localtime(time.time())) # grab time of last refresh
+
+#     # Gets info and stores it into variables   
+#     print("Checking for alerts...")
+#     response = requests.get(get_url_state(state)) 
+#     if(response == 200):       
+#         _ = system('cls') # clears the screen for new updated info
+#         alert_data = response.json()
+#         alert_data_ids = alert_data['features']
+
+#         # City/County then State then US -working
+#         #print("Looking for " + city + " & " + county)
+#         for alert in alert_data_ids:
+#             if(city in alert['properties']['description'] or county in alert['properties']['areaDesc']):                 
+                
+#                 thing  = alert['properties']['event']
+#                 if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
+                    
+#                     current_alerts.append(alert['id'])
+#                     effects(alert)
+#                     local_alert = True     
+
+#         if(local_alert == False):
+#             print("Looking for " + state)
+#             for alert in alert_data_ids:
+#                 if(state in alert['properties']['description'] or state in alert['properties']['areaDesc']):
+                    
+#                     thing  = alert['properties']['event']
+#                     if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
+#                         state_alert = True
+#                         current_alerts.append(alert['id'])
+#                         effects(alert)
+
+#         if(local_alert == False and state_alert == False):
+#             _ = system('cls') # clears the screen for new updated info
+#             print("CHECKING EVERYWHERE...")
+#             response = requests.get(get_url_us())
+#             if(response == 200):
+#                 print(response)
+#                 alert_data = response.json()
+#                 alert_data_ids = alert_data['features']
+
+#                 for alert in alert_data_ids:
+#                     thing  = alert['properties']['event']
+#                     #if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
+#                     if (thing == tw or thing == twa or thing == sw or thing == swa):
+#                         current_alerts.append(alert['id'])
+#                         all_alert = True
+#                         effects(alert)
+#             else:
+#                 _ = system('cls') # clears the screen for new updated info
+#                 print("No Response, Will try again soon")
+#                 print(f"\n{response}")
+#     else:
+#         _ = system('cls') # clears the screen for new updated info
+#         print("No Response, Will try again soon")
+#         print(f"\n{response}")
+
+#     if(all_alert == False):
+#         _ = system('cls') # clears the screen for new updated info
+#         print(response)
+#         print("^.^ All Clear right now. Checking again soon ^.^")
+#     print(f'\nLast check at {curr_time}')
+
+#     # Reset alerts
+#     local_alert = False
+#     state_alert = False
+#     all_alert = False
+
+#     # Reccheck Timer
+#     time.sleep(sleep_time)
