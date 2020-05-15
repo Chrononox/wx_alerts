@@ -148,7 +148,7 @@ while(run):
     print("Checking for local alerts...")
     response = requests.get(get_url_state(state))
 
-    if (response == 200):
+    if (response):
         print("Good Response", response)
         _ = system('cls') # clears the screen for new updated info
         alert_data = response.json()
@@ -178,7 +178,7 @@ while(run):
             _ = system('cls') # clears the screen for new updated info
             print("CHECKING EVERYWHERE...")
             response = requests.get(get_url_us())
-            if(response == 200):
+            if(response):
                 print(response)
                 alert_data = response.json()
                 alert_data_ids = alert_data['features']
@@ -198,7 +198,7 @@ while(run):
 
     else:
         _ = system('cls') # clears the screen for new updated info
-        print("No local Response, Will try again soon")
+        print("No Response, Will try again soon")
         all_alert == True
         print("Bad Response", response)
 
