@@ -202,7 +202,7 @@ while(run):
         all_alert == True
         print("Bad Response", response)
 
-    if(all_alert):
+    if(all_alert == False):
         print("^.^ All Clear Right Now. Checking Again Soon ^.^")
         print(response)
 
