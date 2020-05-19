@@ -10,13 +10,15 @@ import time
 from os import system, name
 import winsound
 
+import display
+
 # Variables
 counter = 0
 sleep_time = 240
 local_alert = False
 state_alert = False
 all_alert = False
-run = True     # TURNS THE MAIN LOOP ON AND OFF
+run = False     # TURNS THE MAIN LOOP ON AND OFF
 current_alerts = []
 
 tw = 'Tornado Warning'
@@ -121,6 +123,8 @@ elif prompt.lower() == 'test -s':
     print("Running fake - Storm Warn")
     effects(strm_test)
     input("\nenter to continue")
+
+display.test_window()
 
 ##!! Main Loop !!##
 
