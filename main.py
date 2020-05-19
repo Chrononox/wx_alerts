@@ -133,7 +133,6 @@ while(run):
     response = requests.get(get_url_state(state))
 
     if (response):
-        print("Good Response", response)
         _ = system('cls') # clears the screen for new updated info
         alert_data = response.json()
         alert_data_ids = alert_data['features']
@@ -160,10 +159,9 @@ while(run):
         
         if(local_alert == False and state_alert == False):
             _ = system('cls') # clears the screen for new updated info
-            print("CHECKING EVERYWHERE...")
+            print("LOCAL FILTERS CLEAR. CHECKING EVERYWHERE...")
             response = requests.get(get_url_us())
             if(response):
-                print(response)
                 alert_data = response.json()
                 alert_data_ids = alert_data['features']
 
@@ -187,8 +185,8 @@ while(run):
         print("Bad Response", response)
 
     if(all_alert == False):
-        print("^.^ All Clear Right Now. Checking Again Soon ^.^")
         print(response)
+        print("^.^ All Clear Right Now. Checking Again Soon ^.^")        
 
     print(f'\nLast check at {curr_time}')
 
