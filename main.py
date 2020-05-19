@@ -116,11 +116,11 @@ prompt = input("Weather alerts v2. enter to continue:")
 if(prompt.lower() == 'test -t'):
     print("Running fake - Tor Warn")
     effects(tor_test)
-    input("enter to continue")
+    input("\nenter to continue")
 elif prompt.lower() == 'test -s':
     print("Running fake - Storm Warn")
     effects(strm_test)
-    prompt("enter to continue")
+    prompt("\nenter to continue")
 
 ##!! Main Loop !!##
 
