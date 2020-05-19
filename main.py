@@ -185,8 +185,8 @@ while(run):
         print("Bad Response", response)
 
     if(all_alert == False):
-        print(response)
-        print("^.^ All Clear Right Now. Checking Again Soon ^.^")        
+        #print(response)
+        print("\n\n^.^ All Clear Right Now. Checking Again Soon ^.^")        
 
     print(f'\nLast check at {curr_time}')
 
