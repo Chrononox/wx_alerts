@@ -109,34 +109,18 @@ def effects(alert):
     else:
         display_alert(alert)
 
-# used for testing colors and sounds and such
-def debug_mode():
-    print("\n\n^.^ DEBUG MODE ^.^\n\n")
-    val = input('^.^_')
-
-    if val.lower() == 'test -t':
-        print("Running fake - Tor Warn")
-        effects(tor_test)
-    elif val.lower() == 'test -s':
-        print("Running fake - Storm Warn")
-        effects(strm_test)
-    elif (val.lower() == 'print'):
-        print(tor_test)
-    elif(val.lower() == 'set -state'):
-        print("nah")
-
-    elif val.lower() == 'help':
-        print('\ntest -s,-t - run test')
-        print('\nprint - print alert') 
-        print("\nset -state")
-
 ##@@ Start up @@##
 _ = system('cls') # clears the screen for new updated info
 prompt = input("Weather alerts v2. enter to continue:")
 
-if(prompt.lower() == 'debug'):
-    run = False
-    debug_mode()
+if(prompt.lower() == 'test -t'):
+    print("Running fake - Tor Warn")
+    effects(tor_test)
+    input("enter to continue")
+elif prompt.lower() == 'test -s':
+    print("Running fake - Storm Warn")
+    effects(strm_test)
+    prompt("enter to continue")
 
 ##!! Main Loop !!##
 
