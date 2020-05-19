@@ -120,7 +120,7 @@ if(prompt.lower() == 'test -t'):
 elif prompt.lower() == 'test -s':
     print("Running fake - Storm Warn")
     effects(strm_test)
-    prompt("\nenter to continue")
+    input("\nenter to continue")
 
 ##!! Main Loop !!##
 
@@ -186,6 +186,7 @@ while(run):
 
     if(all_alert == False):
         #print(response)
+        _ = system('cls') # clears the screen for new updated info
         print("\n\n^.^ All Clear Right Now. Checking Again Soon ^.^")        
 
     print(f'\nLast check at {curr_time}')
