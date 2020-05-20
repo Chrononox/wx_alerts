@@ -1,27 +1,38 @@
-import tkinter as tk
-import requests
-def test(num = 0):
-    print(f"Connected! {num}")
+#import tkinter as tk
+from tkinter import *
+import time
 
-def test_window():
-    response = requests.get('https://api.weather.gov/alerts/active/area/MO')
-    print("Running test window..")
-    alert_data = response.json()
-    alert_data_ids = alert_data['features']
-    window=tk.Tk()
-    window.title("Alert Window")
+
+sleep_time = 240000 #in miliseconds please
+
+def show_window(window):
+    window.after(sleep_time, lambda: window.destroy()) # destroy the widget after 30 seconds
+    window.mainloop()
     
 
-    for alert in alert_data_ids:
-        frame = tk.Frame(master=window)
-        label = tk.Label(master=frame, text=alert['properties']['event'])
-        lbl_severity = tk.Label(master=frame, text=alert['properties']['severity'])
-        lbl_headline = tk.Label(master=frame, text=alert['properties']['headline'])
-        lbl_severity.pack()
-        label.pack()
-        lbl_headline.pack()
-        frame.pack()
+# TODO Change the colors for the warnings n such
+def alert_display_window(current_alerts):
 
-    label2 = tk.Label(text="^.^")
-    label2.pack()
-    window.mainloop()
+    window = Tk()
+    window.title("ALERT!!")    
+
+    for alert in current_alerts:
+        print(alert['properties']['event'])
+
+        alert_frame = Frame(window, bd=2, relief=GROOVE)
+        
+        lbl_severity = Label(alert_frame, text=alert['properties']['event'], justify=LEFT)
+        lbl_severity.pack()
+        lbl_headline = Label(alert_frame, text=alert['properties']['headline'])
+        lbl_headline.pack()
+
+        alert_frame.pack(padx=1, pady=1)
+    reload_btn = Button(text="Reload", command=window.destroy)
+    reload_btn.pack()
+
+    show_window(window)
+    #destroy_window(window)
+    #window.mainloop()
+
+
+    
