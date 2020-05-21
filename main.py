@@ -3,6 +3,8 @@
 # Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
 # Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
 
+# TODO: Error checking whit response.ok
+
 # Imports
 import json
 import requests
@@ -141,7 +143,7 @@ while(run):
     print("Checking for local alerts...")
     response = requests.get(get_url_state(state))
 
-    if (response):
+    if (response.ok):
         _ = system('cls') # clears the screen for new updated info
         alert_data = response.json()
         alert_data_ids = alert_data['features']

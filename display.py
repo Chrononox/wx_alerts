@@ -11,8 +11,7 @@ def show_window(window):
     
 
 # TODO Change the colors for the warnings n such
-# TODO Clean up output 
-# TODO Display info and format needs work
+
 def alert_display_window(current_alerts):
 
     window = Tk()
