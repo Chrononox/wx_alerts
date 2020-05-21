@@ -11,9 +11,13 @@ def show_window(window):
     
 
 # TODO Change the colors for the warnings n such
+# TODO Clean up output 
+# TODO Display info and format needs work
 def alert_display_window(current_alerts):
 
     window = Tk()
+    scrollbar = Scrollbar(window)
+    scrollbar.pack(side = RIGHT, fill=Y)
     window.title("ALERT!!")    
 
     for alert in current_alerts:
@@ -21,10 +25,17 @@ def alert_display_window(current_alerts):
 
         alert_frame = Frame(window, bd=2, relief=GROOVE)
         
-        lbl_severity = Label(alert_frame, text=alert['properties']['event'], justify=LEFT)
-        lbl_severity.pack()
+        # lbl_severity = Label(alert_frame, text=alert['properties']['severity'], justify=LEFT)
+        # lbl_severity.pack()
+        lbl_event = Label(alert_frame, text=alert['properties']['event'])
+        lbl_event.pack()
+        lbl_area = Label(alert_frame, text=alert['properties']['areaDesc'])
+        lbl_area.pack()
         lbl_headline = Label(alert_frame, text=alert['properties']['headline'])
         lbl_headline.pack()
+        # lbl_instructions = Label(alert_frame, text=alert['properties']['instruction'])
+        # lbl_instructions.pack()
+        
 
         alert_frame.pack(padx=1, pady=1)
     reload_btn = Button(text="Reload", command=window.destroy)

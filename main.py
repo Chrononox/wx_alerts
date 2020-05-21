@@ -14,7 +14,6 @@ import display
 
 # Variables
 counter = 0
-sleep_time = 30  #240
 local_alert = False
 state_alert = False
 all_alert = False
@@ -179,7 +178,7 @@ while(run):
                 for alert in alert_data_ids:
                     thing  = alert['properties']['event']
                     #if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
-                    if (thing == tw or thing == twa or thing == sw or thing == swa):
+                    if (thing == tw or thing == twa or thing == sw):
                         #current_alerts.append(alert['id'])
                         all_alert = True
                         effects(alert)
