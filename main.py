@@ -3,6 +3,8 @@
 # Get active alerts nation wide = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert&region_type=land'
 # Get active alerts per state   = 'https://api.weather.gov/alerts/active/area/{state}'
 
+# TODO: Error checking whit response.ok
+
 # Imports
 import json
 import requests
@@ -10,14 +12,16 @@ import time
 from os import system, name
 import winsound
 
+import display
+
 # Variables
 counter = 0
-sleep_time = 240
 local_alert = False
 state_alert = False
 all_alert = False
 run = True     # TURNS THE MAIN LOOP ON AND OFF
 current_alerts = []
+
 
 tw = 'Tornado Warning'
 twa = 'Tornado Watch'
@@ -94,33 +98,40 @@ def effects(alert):
              
     if (alert['properties']['event'] == 'Tornado Warning'):
         play_sound(2400,1000)
-        display_alert(alert, twarn_color)
+        #display_alert(alert, twarn_color)
+        current_alerts.append(alert)
 
     elif (alert['properties']['event'] == 'Severe Thunderstorm Warning'):
         play_sound(1000, 500)
-        display_alert(alert, swarn_color)
+        #display_alert(alert, swarn_color)
+        current_alerts.append(alert)
     
     elif (alert['properties']['event'] == 'Tornado Watch'):
         play_sound(200, 500)
-        display_alert(alert, twatch_color)
+        #display_alert(alert, twatch_color)
+        current_alerts.append(alert)
         
     elif (alert['properties']['event'] == 'Severe Thunderstorm Watch'):
-        display_alert(alert, swatch_color)
+        #display_alert(alert, swatch_color)
+        current_alerts.append(alert)
     else:
         display_alert(alert)
+        current_alerts.append(alert)
 
 ##@@ Start up @@##
 _ = system('cls') # clears the screen for new updated info
-prompt = input("Weather alerts v2. enter to continue:")
+#prompt = input("Weather alerts v2. enter to continue:")
 
-if(prompt.lower() == 'test -t'):
-    print("Running fake - Tor Warn")
-    effects(tor_test)
-    input("\nenter to continue")
-elif prompt.lower() == 'test -s':
-    print("Running fake - Storm Warn")
-    effects(strm_test)
-    input("\nenter to continue")
+# if(prompt.lower() == 'test -t'):
+#     print("Running fake - Tor Warn")
+#     effects(tor_test)
+#     input("\nenter to continue")
+# elif prompt.lower() == 'test -s':
+#     print("Running fake - Storm Warn")
+#     effects(strm_test)
+#     input("\nenter to continue")
+
+#display.test_window()
 
 ##!! Main Loop !!##
 
@@ -128,14 +139,15 @@ while(run):
 
     _ = system('cls') # clears the screen for new updated info
     curr_time = time.asctime(time.localtime(time.time())) # grab time of last refresh
-
+    
     print("Checking for local alerts...")
     response = requests.get(get_url_state(state))
 
-    if (response):
+    if (response.ok):
         _ = system('cls') # clears the screen for new updated info
         alert_data = response.json()
         alert_data_ids = alert_data['features']
+        
         
         # City/County then State then US
         for alert in alert_data_ids:
@@ -143,7 +155,7 @@ while(run):
                 
                 thing  = alert['properties']['event']
                 if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):    
-                    current_alerts.append(alert['id'])
+                    #current_alerts.append(alert['id'])
                     effects(alert)
                     local_alert = True
 
@@ -154,7 +166,7 @@ while(run):
                     thing  = alert['properties']['event']
                     if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
                         state_alert = True
-                        current_alerts.append(alert['id'])
+                        #current_alerts.append(alert['id'])
                         effects(alert)
         
         if(local_alert == False and state_alert == False):
@@ -168,8 +180,8 @@ while(run):
                 for alert in alert_data_ids:
                     thing  = alert['properties']['event']
                     #if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):
-                    if (thing == tw or thing == twa or thing == sw or thing == swa):
-                        current_alerts.append(alert['id'])
+                    if (thing == tw or thing == twa or thing == sw):
+                        #current_alerts.append(alert['id'])
                         all_alert = True
                         effects(alert)
             else:
@@ -187,8 +199,10 @@ while(run):
     if(all_alert == False):
         #print(response)
         _ = system('cls') # clears the screen for new updated info
-        print("\n\n^.^ All Clear Right Now. Checking Again Soon ^.^")        
+        print("\n\n\u001b[38;5;200m^.^\033[0m All Clear Right Now. Checking Again Soon \u001b[38;5;200m^.^\033[0m")        
 
+    display.alert_display_window(current_alerts)
+    current_alerts = []
     print(f'\nLast check at {curr_time}')
 
     # Reset alerts
@@ -197,4 +211,4 @@ while(run):
     all_alert = False
 
     # Reccheck Timer
-    time.sleep(sleep_time)
+#    time.sleep(sleep_time)
