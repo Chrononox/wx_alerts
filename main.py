@@ -157,7 +157,7 @@ while(run):
                 if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):    
                     #current_alerts.append(alert['id'])
                     effects(alert)
-                    local_alert = True
+                    all_alert = True
 
         if(local_alert == False):
             for alert in alert_data_ids:
@@ -168,6 +168,7 @@ while(run):
                         state_alert = True
                         #current_alerts.append(alert['id'])
                         effects(alert)
+                        all_alert = True
         
         if(local_alert == False and state_alert == False):
             _ = system('cls') # clears the screen for new updated info

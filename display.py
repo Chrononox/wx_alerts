@@ -15,8 +15,8 @@ def show_window(window):
 def alert_display_window(current_alerts):
 
     window = Tk()
-    scrollbar = Scrollbar(window)
-    scrollbar.pack(side = RIGHT, fill=Y)
+    #scrollbar = Scrollbar(window)
+    #scrollbar.pack(side = RIGHT, fill=Y)
     window.title("ALERT!!")    
 
     for alert in current_alerts:
@@ -43,6 +43,3 @@ def alert_display_window(current_alerts):
     show_window(window)
     #destroy_window(window)
     #window.mainloop()
-
-
-    
