@@ -4,6 +4,7 @@ import time
 
 
 sleep_time = 240000 #in miliseconds please
+is_alerts = False
 
 def show_window(window):
     window.after(sleep_time, lambda: window.destroy()) # destroy the widget after 30 seconds
@@ -17,10 +18,11 @@ def alert_display_window(current_alerts):
     window = Tk()
     #scrollbar = Scrollbar(window)
     #scrollbar.pack(side = RIGHT, fill=Y)
-    window.title("ALERT!!")    
+    # window.title("ALERT!!")    
 
     for alert in current_alerts:
-        print(alert['properties']['event'])
+        print(f"{alert['properties']['event']}, {alert ['properties']['areaDesc']}\n\n")
+        window.title("ALERT!!")  
 
         alert_frame = Frame(window, bd=2, relief=GROOVE)
         
@@ -39,7 +41,12 @@ def alert_display_window(current_alerts):
         alert_frame.pack(padx=1, pady=1)
     reload_btn = Button(text="Reload", command=window.destroy)
     reload_btn.pack()
-
+    if(is_alerts == False):
+        window.title("ALL CLEAR")  
+        alert_frame = Frame(window, bd=2, relief=GROOVE)
+        lbl_news = Label(alert_frame, text="^.^ All Clear Right Now. Checking Again Soon ^.^")
+        lbl_news.pack()
+        alert_frame.pack()
     show_window(window)
     #destroy_window(window)
     #window.mainloop()

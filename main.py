@@ -202,9 +202,10 @@ while(run):
         _ = system('cls') # clears the screen for new updated info
         print("\n\n\u001b[38;5;200m^.^\033[0m All Clear Right Now. Checking Again Soon \u001b[38;5;200m^.^\033[0m")        
 
+    print(f'\nLast check at {curr_time}')
     display.alert_display_window(current_alerts)
     current_alerts = []
-    print(f'\nLast check at {curr_time}')
+    
 
     # Reset alerts
     local_alert = False
