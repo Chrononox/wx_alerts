@@ -1,6 +1,7 @@
 #import tkinter as tk
 from tkinter import *
 import time
+from os import system, name
 
 
 sleep_time = 240000 #in miliseconds please
@@ -20,7 +21,7 @@ def alert_display_window(current_alerts):
     window.title("ALERT!!")    
 
     for alert in current_alerts:
-        print(alert['properties']['event'])
+        #print(alert['properties']['event'])
 
         alert_frame = Frame(window, bd=2, relief=GROOVE)
         
@@ -40,6 +41,9 @@ def alert_display_window(current_alerts):
     reload_btn = Button(text="Reload", command=window.destroy)
     reload_btn.pack()
 
+    _ = system('cls') # clears the screen for new updated info
+    print("Starting WX-Alerts.  Monitering for severe weather localy and nation-wide!")
+    print('^.^')
     show_window(window)
     #destroy_window(window)
     #window.mainloop()

@@ -22,7 +22,6 @@ all_alert = False
 run = True     # TURNS THE MAIN LOOP ON AND OFF
 current_alerts = []
 
-
 tw = 'Tornado Warning'
 twa = 'Tornado Watch'
 sw = 'Severe Thunderstorm Warning'
@@ -120,6 +119,9 @@ def effects(alert):
 
 ##@@ Start up @@##
 _ = system('cls') # clears the screen for new updated info
+print("Starting WX-Alerts.  Monitering for severe weather localy and nation-wide!")
+print('"^.^"')
+# uncomment below to enable testing 
 #prompt = input("Weather alerts v2. enter to continue:")
 
 # if(prompt.lower() == 'test -t'):
@@ -198,7 +200,7 @@ while(run):
 
     if(all_alert == False):
         #print(response)
-        _ = system('cls') # clears the screen for new updated info
+        #_ = system('cls') # clears the screen for new updated info
         print("\n\n\u001b[38;5;200m^.^\033[0m All Clear Right Now. Checking Again Soon \u001b[38;5;200m^.^\033[0m")        
 
     display.alert_display_window(current_alerts)
