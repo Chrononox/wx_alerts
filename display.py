@@ -22,12 +22,12 @@ def alert_display_window(current_alerts):
     # window.title("ALERT!!")    
 
     for alert in current_alerts:
-<<<<<<< HEAD
+
         #print(alert['properties']['event'])
-=======
+
         print(f"{alert['properties']['event']}, {alert ['properties']['areaDesc']}\n\n")
         window.title("ALERT!!")  
->>>>>>> 2d06e5d593d81129df028622705752f30291772c
+
 
         alert_frame = Frame(window, bd=2, relief=GROOVE)
         
@@ -46,19 +46,19 @@ def alert_display_window(current_alerts):
         alert_frame.pack(padx=1, pady=1)
     reload_btn = Button(text="Reload", command=window.destroy)
     reload_btn.pack()
-<<<<<<< HEAD
+
 
     _ = system('cls') # clears the screen for new updated info
     print("Starting WX-Alerts.  Monitering for severe weather localy and nation-wide!")
     print('^.^')
-=======
+
     if(is_alerts == False):
         window.title("ALL CLEAR")  
         alert_frame = Frame(window, bd=2, relief=GROOVE)
         lbl_news = Label(alert_frame, text="^.^ All Clear Right Now. Checking Again Soon ^.^")
         lbl_news.pack()
         alert_frame.pack()
->>>>>>> 2d06e5d593d81129df028622705752f30291772c
+
     show_window(window)
     #destroy_window(window)
     #window.mainloop()
