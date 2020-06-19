@@ -159,7 +159,7 @@ while(run):
                 if (thing == tw or thing == twa or thing == sw or thing == swa or thing == fw or thing == ww or thing == eh or thing == fire or thing == sws):    
                     #current_alerts.append(alert['id'])
                     effects(alert)
-                    local_alert = True
+                    all_alert = True
 
         if(local_alert == False):
             for alert in alert_data_ids:
@@ -170,6 +170,7 @@ while(run):
                         state_alert = True
                         #current_alerts.append(alert['id'])
                         effects(alert)
+                        all_alert = True
         
         if(local_alert == False and state_alert == False):
             _ = system('cls') # clears the screen for new updated info
@@ -203,9 +204,10 @@ while(run):
         #_ = system('cls') # clears the screen for new updated info
         print("\n\n\u001b[38;5;200m^.^\033[0m All Clear Right Now. Checking Again Soon \u001b[38;5;200m^.^\033[0m")        
 
+    print(f'\nLast check at {curr_time}')
     display.alert_display_window(current_alerts)
     current_alerts = []
-    print(f'\nLast check at {curr_time}')
+    
 
     # Reset alerts
     local_alert = False
