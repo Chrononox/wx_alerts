@@ -22,11 +22,11 @@ def alert_display_window(current_alerts):
     # window.title("ALERT!!")    
 
     for alert in current_alerts:
-
         #print(alert['properties']['event'])
 
         print(f"{alert['properties']['event']}, {alert ['properties']['areaDesc']}\n\n")
-        window.title("ALERT!!")  
+        window.title("ALERT!!") 
+        is_alerts == True 
 
 
         alert_frame = Frame(window, bd=2, relief=GROOVE)
@@ -49,7 +49,7 @@ def alert_display_window(current_alerts):
 
 
     _ = system('cls') # clears the screen for new updated info
-    print("Starting WX-Alerts.  Monitering for severe weather localy and nation-wide!")
+    print("WX-ALerts Running.  Monitering for severe weather localy and nation-wide!")
     print('^.^')
 
     if(is_alerts == False):

@@ -1,3 +1,4 @@
 # wx_alerts
 
-Checks for weather alerts from a givin state at chosen intervals.
+Checks for alerts at pre-set local locations.
+If nothing found local, will check nation-wide
