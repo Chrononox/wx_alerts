@@ -14,6 +14,15 @@ def show_window(window):
 
 # TODO Change the colors for the warnings n such
 
+def no_alerts_display_window():
+    
+    window.title("ALL CLEAR")  
+    alert_frame = Frame(window, bd=2, relief=GROOVE)
+    lbl_news = Label(alert_frame, text="^.^ All Clear Right Now. Checking Again Soon ^.^")
+    lbl_news.pack()
+    alert_frame.pack()
+
+
 def alert_display_window(current_alerts):
 
     window = Tk()
@@ -26,7 +35,6 @@ def alert_display_window(current_alerts):
 
         print(f"{alert['properties']['event']}, {alert ['properties']['areaDesc']}\n\n")
         window.title("ALERT!!") 
-        is_alerts == True 
 
 
         alert_frame = Frame(window, bd=2, relief=GROOVE)
@@ -52,12 +60,12 @@ def alert_display_window(current_alerts):
     print("WX-ALerts Running.  Monitering for severe weather localy and nation-wide!")
     print('^.^')
 
-    if(is_alerts == False):
-        window.title("ALL CLEAR")  
-        alert_frame = Frame(window, bd=2, relief=GROOVE)
-        lbl_news = Label(alert_frame, text="^.^ All Clear Right Now. Checking Again Soon ^.^")
-        lbl_news.pack()
-        alert_frame.pack()
+    # if(is_alerts == False):
+    #     window.title("ALL CLEAR")  
+    #     alert_frame = Frame(window, bd=2, relief=GROOVE)
+    #     lbl_news = Label(alert_frame, text="^.^ All Clear Right Now. Checking Again Soon ^.^")
+    #     lbl_news.pack()
+    #     alert_frame.pack()
 
     show_window(window)
     #destroy_window(window)

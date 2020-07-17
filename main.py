@@ -202,6 +202,7 @@ while(run):
     if(all_alert == False):
         #print(response)
         #_ = system('cls') # clears the screen for new updated info
+        display.no_alerts_display_window()
         print("\n\n\u001b[38;5;200m^.^\033[0m All Clear Right Now. Checking Again Soon \u001b[38;5;200m^.^\033[0m")        
 
     print(f'\nLast check at {curr_time}')
