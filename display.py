@@ -15,12 +15,17 @@ def show_window(window):
 # TODO Change the colors for the warnings n such
 
 def no_alerts_display_window():
+
+    window = Tk()
     
     window.title("ALL CLEAR")  
     alert_frame = Frame(window, bd=2, relief=GROOVE)
     lbl_news = Label(alert_frame, text="^.^ All Clear Right Now. Checking Again Soon ^.^")
     lbl_news.pack()
     alert_frame.pack()
+
+    reload_btn = Button(text="Reload", command=window.destroy)
+    reload_btn.pack()
 
 
 def alert_display_window(current_alerts):
