@@ -121,19 +121,6 @@ def effects(alert):
 _ = system('cls') # clears the screen for new updated info
 print("Starting WX-Alerts.  Monitering for severe weather localy and nation-wide!")
 print('"^.^"')
-# uncomment below to enable testing 
-#prompt = input("Weather alerts v2. enter to continue:")
-
-# if(prompt.lower() == 'test -t'):
-#     print("Running fake - Tor Warn")
-#     effects(tor_test)
-#     input("\nenter to continue")
-# elif prompt.lower() == 'test -s':
-#     print("Running fake - Storm Warn")
-#     effects(strm_test)
-#     input("\nenter to continue")
-
-#display.test_window()
 
 ##!! Main Loop !!##
 
@@ -214,6 +201,3 @@ while(run):
     local_alert = False
     state_alert = False
     all_alert = False
-
-    # Reccheck Timer
-#    time.sleep(sleep_time)
